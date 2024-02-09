@@ -1,0 +1,13 @@
+name = "JHRank"
+uuid = "9569dade-06a2-4b9d-8f40-51b8d39403f4"
+authors = ["ailov"]
+version = "1.0.0-DEV"
+
+[compat]
+julia = "1"
+
+[extras]
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+
+[targets]
+test = ["Test"]
