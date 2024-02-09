@@ -1,5 +1,11 @@
 module JHRank
 
-# Write your package code here.
+__precompile__(true)
+
+include("ModulesIncludes.jl")
+
+using EasyModule
+#using MediumModule
+#using HardModule
 
 end
