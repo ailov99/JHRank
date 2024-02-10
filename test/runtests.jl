@@ -1,5 +1,9 @@
 using Test
 
+@testset "UtilityFunctionsModuleTests" begin
+    include("test_utilityfunctionsmodule.jl")
+end
+
 @testset "EasyModuleTests" begin
     include("test_easymodule.jl")
 end
