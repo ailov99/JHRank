@@ -8,14 +8,14 @@ module EasyModule
 
 __precompile__(true)
 
-using ..UtilityFunctionsModule: getIntDigits, reverseInt
+using ..UtilityFunctionsModule: getIntDigits, getDigitAt, reverseInt
 
 """
     beautifulDays(
         i::Int32, 
         j::Int32, 
         k::Int32
-    )
+    )::Int32
 
 'Beautiful Days at the movies'
 Lily likes to play games with integers. She has created a new game where she determines the difference between a number and its reverse. For instance, 
@@ -58,7 +58,30 @@ function beautifulDays(
     return n_beautiful_days
 end
 
+"""
+    findDigits(n::Int32)::Int32
 
+Given an integer, for each digit that makes up the integer determine 
+whether it is a divisor. Count the number of divisors occurring within the integer.
+
+# Arguments
+- `n` = The integer to scan.
+
+# Output
+The number of digits in n that are divisors of n.
+"""
+function findDigits(n::Int32)::Int32
+    count::Int32 = 0
+    digit_count = getIntDigits(n)
+    for i = 1:digit_count
+        ith_digit = getDigitAt(n, i)
+        if ith_digit != 0 && n % ith_digit == 0
+            count += 1
+        end
+    end
+    
+    return count
+end
 
 
 

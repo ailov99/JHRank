@@ -16,7 +16,6 @@ function test()
     @test getIntDigits(typemin(Int32)) == 10
     @test getIntDigits(typemax(Int64)) == 19
     @test_throws DomainError getIntDigits(typemin(Int64))
-    9223372036854775807
 end
 
 end # module getIntDigits_test
@@ -50,3 +49,26 @@ end # module reverseInt_test
 
 using .reverseInt_test
 reverseInt_test.test()
+
+module getDigitAt_test
+
+using JHRank
+using JHRank.UtilityFunctionsModule
+using Test
+
+function test()
+    @test getDigitAt(523464, 4) == 4
+    @test getDigitAt(typemin(Int32), 8) == 6
+    @test getDigitAt(typemax(Int32), 9) == 4
+    @test_throws DomainError getDigitAt(typemin(Int64), 12) == 5
+    @test getDigitAt(typemax(Int64), 14) == 7
+    @test getDigitAt(typemax(Int64), 8) == 0
+    @test_throws DomainError getDigitAt(12345, -5)
+    @test_throws DomainError getDigitAt(12345, 0)
+    @test_throws DomainError getDigitAt(12345, 6)
+end
+
+end # module getDigitAt_test
+
+using .getDigitAt_test
+getDigitAt_test.test()

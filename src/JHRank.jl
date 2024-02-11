@@ -5,12 +5,15 @@ __precompile__(true)
 include("ModuleIncludes.jl")
 
 using .UtilityFunctionsModule:
-    getIntDigits, reverseInt
-export getIntDigits, reverseInt
+    getIntDigits, 
+    getDigitAt,
+    reverseInt
+export getIntDigits, getDigitAt, reverseInt
 
 using .EasyModule:
-    beautifulDays
-export beautifulDays
+    beautifulDays,
+    findDigits
+export beautifulDays, findDigits
 
 #using MediumModule
 #using HardModule
