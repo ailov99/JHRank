@@ -124,4 +124,41 @@ function cutTheSticks(arr::Array{Int32})::Array{Int32}
     return ret_arr
 end
 
+"""
+    circularArrayRotation(
+        a::Array{Int32}, 
+        k::Int32, 
+        queries::Array{Int32}
+    )::Array{Int32}
+
+John Watson knows of an operation called a right circular rotation on an array of integers. 
+One rotation operation moves the last array element to the first position and shifts all 
+remaining elements right one. To test Sherlock's abilities, Watson provides Sherlock with 
+an array of integers. Sherlock is to perform the rotation operation a number of times then 
+determine the value of the element at a given position.
+For each array, perform a number of right circular rotations and return the values of the 
+elements at the given indices.
+
+# Arguments
+- `a` = The array to rotate
+- `k` = Number of rotation to perform on a
+- `queries` = Indeces of the rotated array to report (Note: 0-based indeces)
+
+# Output
+List of values in the rotated array a, as specified by the indices given in array queries 
+"""
+function circularArrayRotation(
+    a::Array{Int32}, 
+    k::Int32, 
+    queries::Array{Int32}
+)::Array{Int32}
+    res = Int32[]
+    new_array_start = ((length(a) - (k%length(a)) ) % length(a))
+    for q in queries
+        new_array_q = (q + new_array_start) % length(a)
+        push!(res, a[new_array_q+1]) # Julia indexing
+    end
+    return res
+end
+
 end # module EasyModule

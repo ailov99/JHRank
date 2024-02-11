@@ -13,8 +13,10 @@ export getIntDigits, getDigitAt, reverseInt
 using .EasyModule:
     beautifulDays,
     findDigits,
-    cutTheSticks
-export beautifulDays, findDigits, cutTheSticks
+    cutTheSticks,
+    circularArrayRotation
+export beautifulDays, findDigits, cutTheSticks,
+    circularArrayRotation
 
 #using MediumModule
 #using HardModule

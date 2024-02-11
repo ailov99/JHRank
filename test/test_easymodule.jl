@@ -91,3 +91,37 @@ end # module cutTheSticks_test
 
 using .cutTheSticks_test
 cutTheSticks_test.test()
+
+
+module circularArrayRotation_test
+
+using JHRank
+using JHRank.EasyModule
+using Test
+
+# i32 'macro' is needed as we only implement this function for Int32 (HR requirements)
+struct i32 end
+(*)(n, ::Type{i32}) = Int32(n)
+
+function test()
+    # HR
+    array_to_rotate::Array{Int32} = [1, 2, 3]
+    indeces_to_report::Array{Int32} = [0, 1, 2]
+    @test circularArrayRotation(array_to_rotate, 2i32, indeces_to_report) == [2, 3, 1]
+
+    # Other
+    @test circularArrayRotation(array_to_rotate, 0i32, indeces_to_report) == array_to_rotate
+    @test circularArrayRotation(array_to_rotate, 3i32, indeces_to_report) == array_to_rotate
+    
+    array_to_rotate = [4, 6, 1, 2, 3, 5, 8, 9, 1]
+    indeces_to_report = [0]
+    @test circularArrayRotation(array_to_rotate, 5i32, indeces_to_report) == [3]
+
+    indeces_to_report = [2, 4, 5, 8]
+    @test circularArrayRotation(array_to_rotate, 5i32, indeces_to_report) == [8, 1, 4, 2]
+end
+
+end # module circularArrayRotation_test
+
+using .circularArrayRotation_test
+circularArrayRotation_test.test()
