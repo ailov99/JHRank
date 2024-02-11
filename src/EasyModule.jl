@@ -83,6 +83,45 @@ function findDigits(n::Int32)::Int32
     return count
 end
 
+"""
+    cutTheSticks(arr::Array{Int32})::Array{Int32}
 
+You are given a number of sticks of varying lengths. You will iteratively cut 
+the sticks into smaller sticks, discarding the shortest pieces until there are none left. 
+At each iteration you will determine the length of the shortest stick remaining, cut that 
+length from each of the longer sticks and then discard all the pieces of that shortest length. 
+When all the remaining sticks are the same length, they cannot be shortened so discard them.
+Given the lengths of n sticks, print the number of sticks that are left before each iteration 
+until there are none left.
+
+# Arguments
+- `arr` = List of stick lengths
+
+# Output
+List containing the number of sticks before each iteration of "cutting"
+"""
+function cutTheSticks(arr::Array{Int32})::Array{Int32}
+    ret_arr = Int[]
+    # Sort it in desc order first
+    sort!(arr, rev=true)
+    
+    # While we have elements to pop
+    while length(arr) > 0
+        # Record current length
+        push!(ret_arr, length(arr))
+        
+        # Pop smallest and cut
+        smallest = pop!(arr)
+        for i = 1:length(arr)
+            arr[i] -= smallest
+        end
+        # Pop sticks that got cut out completely
+        while !isempty(arr) && last(arr) < 1
+            pop!(arr)
+        end    
+    end
+    
+    return ret_arr
+end
 
 end # module EasyModule

@@ -57,3 +57,37 @@ end # module findDigits_test
 
 using .findDigits_test
 findDigits_test.test()
+
+module cutTheSticks_test
+
+using JHRank
+using JHRank.EasyModule
+using Test
+
+function test()
+    # HR
+    # Test Case 8
+    # sticks-length        length-of-cut   sticks-cut
+    # 5 4 4 2 2 8             2               6
+    # 3 2 2 _ _ 6             2               4
+    # 1 _ _ _ _ 4             1               2
+    # _ _ _ _ _ 3             3               1
+    # _ _ _ _ _ _           DONE            DONE
+    test_case_8::Array{Int32} = [5, 4, 4, 2, 2, 8]
+    @test cutTheSticks(test_case_8) == [6, 4, 2, 1]
+
+    # Test Case 9
+    # sticks-length         length-of-cut   sticks-cut
+    # 1 2 3 4 3 3 2 1         1               8
+    # _ 1 2 3 2 2 1 _         1               6
+    # _ _ 1 2 1 1 _ _         1               4
+    # _ _ _ 1 _ _ _ _         1               1
+    # _ _ _ _ _ _ _ _       DONE            DONE
+    test_case_9::Array{Int32} = [1, 2, 3, 4, 3, 3, 2, 1]
+    @test cutTheSticks(test_case_9) == [8, 6, 4, 1]
+end
+
+end # module cutTheSticks_test
+
+using .cutTheSticks_test
+cutTheSticks_test.test()

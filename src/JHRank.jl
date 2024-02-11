@@ -12,8 +12,9 @@ export getIntDigits, getDigitAt, reverseInt
 
 using .EasyModule:
     beautifulDays,
-    findDigits
-export beautifulDays, findDigits
+    findDigits,
+    cutTheSticks
+export beautifulDays, findDigits, cutTheSticks
 
 #using MediumModule
 #using HardModule
