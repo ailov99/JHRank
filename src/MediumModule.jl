@@ -39,11 +39,10 @@ function formingMagicSquare(s::Vector{Vector{Int32}})::Int
         1 5 9;
         6 7 2
     ]
-    for i = 1:4
+    for rotate in (x -> x, rotr90, rot180, rotl90)
         # Calculate cost -> Save if min -> Rotate model matrix
-        matrix_abs_diff = sum(abs.(input_m - model_magic_square))
+        matrix_abs_diff = sum(abs.(input_m - rotate(model_magic_square)))
         min_cost = min(min_cost, matrix_abs_diff)
-        model_magic_square = rotr90(model_magic_square)
     end
 
     # 2. Check vs 3x3 reflected model magic square and its 4 90-degree rotations
@@ -51,11 +50,10 @@ function formingMagicSquare(s::Vector{Vector{Int32}})::Int
     for i = 1:3
         model_magic_square[i,1], model_magic_square[i,3] = model_magic_square[i,3], model_magic_square[i,1]
     end
-    for i = 1:4
+    for rotate in (x -> x, rotr90, rot180, rotl90)
         # Calculate cost -> Save if min -> Rotate reflected model matrix
-        matrix_abs_diff = sum(abs.(input_m - model_magic_square))
+        matrix_abs_diff = sum(abs.(input_m - rotate(model_magic_square)))
         min_cost = min(min_cost, matrix_abs_diff)
-        model_magic_square = rotr90(model_magic_square)
     end
 
     # The minimum diff is the minimal cost for converting the 3x3 given matrix into a magic square
