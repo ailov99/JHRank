@@ -125,3 +125,20 @@ end # module circularArrayRotation_test
 
 using .circularArrayRotation_test
 circularArrayRotation_test.test()
+
+module viralAdvertising_test
+
+using JHRank
+using JHRank.EasyModule
+using Test
+
+function test()
+    # HR
+    @test viralAdvertising(5) == 24
+    @test viralAdvertising(3) == 9
+end
+
+end # module viralAdvertising_test
+
+using .viralAdvertising_test
+viralAdvertising_test.test()

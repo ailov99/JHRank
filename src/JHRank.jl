@@ -14,9 +14,10 @@ using .EasyModule:
     beautifulDays,
     findDigits,
     cutTheSticks,
-    circularArrayRotation
+    circularArrayRotation,
+    viralAdvertising
 export beautifulDays, findDigits, cutTheSticks,
-    circularArrayRotation
+    circularArrayRotation, viralAdvertising
 
 using .MediumModule:
     formingMagicSquare
