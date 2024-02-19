@@ -18,7 +18,10 @@ using .EasyModule:
 export beautifulDays, findDigits, cutTheSticks,
     circularArrayRotation
 
-#using MediumModule
+using .MediumModule:
+    formingMagicSquare
+export formingMagicSquare
+
 #using HardModule
 
 end
