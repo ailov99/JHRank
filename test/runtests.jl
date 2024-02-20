@@ -12,8 +12,8 @@ end
     include("test_mediummodule.jl")
 end
 
-#@testset "HardModuleTests" begin
-#    include("test_hardmodule.jl")
-#end
+@testset "HardModuleTests" begin
+    include("test_hardmodule.jl")
+end
 
 true

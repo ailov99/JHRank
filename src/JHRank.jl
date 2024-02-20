@@ -23,6 +23,8 @@ using .MediumModule:
     formingMagicSquare
 export formingMagicSquare
 
-#using HardModule
+using .HardModule:
+    matrixRotation
+export matrixRotation
 
 end
