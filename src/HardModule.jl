@@ -32,9 +32,9 @@ Note:
 The rotated matrix
 """
 function matrixRotation(
-    matrix::Vector{Vector{Int}}, 
+    matrix::Vector{Vector{Number}}, 
     r::Int
-)::Matrix{Int}
+)::Matrix{Number}
     # Convert 2d Vector into a Matrix
     # (use transpose as we want vectors to be rows)
     input_m = vcat([x' for x in matrix]...)
@@ -42,7 +42,7 @@ function matrixRotation(
     # Get matrix dimensions
     matrix_height = size(input_m)[1]
     matrix_width = size(input_m)[2]
-    output_m = Matrix{Int}(undef, matrix_height, matrix_width)
+    output_m = Matrix{Number}(undef, matrix_height, matrix_width)
     
     # We will rotate ring-by-ring
     rings_in_matrix = min(floor(Int, matrix_height/2), floor(Int, matrix_width/2))

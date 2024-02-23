@@ -2,11 +2,12 @@ module matrixRotation_test
 
 using JHRank
 using JHRank.HardModule
+using JHRank.UtilityFunctionsModule
 using Test
 
 function test()
     # HR
-    m1 = Array{Array{Int, 1}, 1}(
+    m1 = Array{Array{Number, 1}, 1}(
         [[1, 2, 3, 4],
          [12, 1, 2, 5],
          [11, 4, 3, 6],
@@ -27,7 +28,7 @@ function test()
     @test matrixRotation(m1, 1) == m1_rot_once
     @test matrixRotation(m1, 2) == m1_rot_twice
 
-    m2 = Array{Array{Int, 1}, 1}(
+    m2 = Array{Array{Number, 1}, 1}(
         [[1, 2, 3, 4],
          [5, 6, 7, 8],
          [9, 10, 11, 12],
@@ -48,7 +49,7 @@ function test()
     @test matrixRotation(m2, 1) == m2_rot_once
     @test matrixRotation(m2, 2) == m2_rot_twice
 
-    m3 = Array{Array{Int, 1}, 1}(
+    m3 = Array{Array{Number, 1}, 1}(
         [[1, 2, 3, 4],
          [7, 8, 9, 10],
          [13, 14, 15, 16],
@@ -110,7 +111,7 @@ function test()
         @test matrixRotation(m3, i) == expected_m
     end
 
-    m4 = Array{Array{Int, 1}, 1}(
+    m4 = Array{Array{Number, 1}, 1}(
         [[1, 1],
          [1, 1]]
     )
@@ -120,7 +121,7 @@ function test()
     ]
     @test matrixRotation(m4, 99) == m4_rot
 
-    m5 = Array{Array{Int, 1}, 1}(
+    m5 = Array{Array{Number, 1}, 1}(
         [[9718805 , 60013003, 5103628 , 85388216, 21884498, 38021292, 73470430, 31785927],
          [69999937, 71783860, 10329789, 96382322, 71055337, 30247265, 96087879, 93754371],
          [79943507, 75398396, 38446081, 34699742, 1408833 , 51189   , 17741775, 53195748],
@@ -145,6 +146,30 @@ function test()
         69999937 79943507 79354991 84146680 58623600 49469904 20888810 55349226
     ]
     @test matrixRotation(m5, 40) == m5_rot
+
+    # m6, m7, m8
+    for (matrix_filename, rot_matrix_filename) in [
+        ("matrixRotationM6In.data", "matrixRotationM6Out.data"),
+        ("matrixRotationM7In.data", "matrixRotationM7Out.data"),
+        ("matrixRotationM8In.data", "matrixRotationM8Out.data")
+    ]
+        m_in_path = joinpath(@__DIR__, "testcase_data", matrix_filename)
+        m_rot_path = joinpath(@__DIR__, "testcase_data", rot_matrix_filename)
+
+        m, m_meta = readMatrixWithMetadataFromFile(m_in_path)
+        height, width, rotations = m_meta
+
+        # Need to convert matrix to vector of vectors as matrix rotation requires it (only to convert it back internally)
+        # (this was a HR requirement)
+        m_as_v = Vector{Vector{Number}}();
+        for i = 1:height
+            push!(m_as_v, m[i, :])
+        end
+
+        m_rot = readMatrixFromFile(m_rot_path)
+        @test matrixRotation(m_as_v, rotations) == m_rot
+    end
+
 end
 
 end # module matrixRotation_test

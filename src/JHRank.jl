@@ -7,8 +7,14 @@ include("ModuleIncludes.jl")
 using .UtilityFunctionsModule:
     getIntDigits, 
     getDigitAt,
-    reverseInt
-export getIntDigits, getDigitAt, reverseInt
+    reverseInt,
+    readMatrixFromFile,
+    readMatrixWithMetadataFromFile,
+    writeMatrixToFile,
+    writeMatrixAndMetadataToFile
+export getIntDigits, getDigitAt, reverseInt,
+    readMatrixFromFile, readMatrixWithMetadataFromFile,
+    writeMatrixToFile, writeMatrixAndMetadataToFile
 
 using .EasyModule:
     beautifulDays,

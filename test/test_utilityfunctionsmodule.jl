@@ -72,3 +72,138 @@ end # module getDigitAt_test
 
 using .getDigitAt_test
 getDigitAt_test.test()
+
+module matrixReadWrite_test
+
+using JHRank
+using JHRank.UtilityFunctionsModule
+using Test
+
+function test()
+    # Define
+    m1 = rand(Int, 3, 3)
+    m1_meta = [3, 3]
+    m1_f = joinpath(@__DIR__, "m1.data")
+    m1_meta_f = joinpath(@__DIR__, "m1_meta.data")
+    try
+        # Write
+        @test_nowarn writeMatrixToFile(m1, m1_f)
+        @test_nowarn writeMatrixAndMetadataToFile(m1, m1_meta, m1_meta_f)
+        # Read
+        @test_throws ArgumentError readMatrixFromFile("doesnt_exist.data")
+        @test_throws ArgumentError readMatrixWithMetadataFromFile("doesnt_exist.data")
+        @test m1 == readMatrixFromFile(m1_f)
+        @test (m1, m1_meta) == readMatrixWithMetadataFromFile(m1_meta_f)
+    finally
+        isfile(m1_f) && rm(m1_f)
+        isfile(m1_meta_f) && rm(m1_meta_f)
+    end
+
+    # Define
+    m2 = rand(3,3)
+    m2_meta = [3, 3]
+    m2_f = joinpath(@__DIR__, "m2.data")
+    m2_meta_f = joinpath(@__DIR__, "m2_meta.data")
+    try
+        # Write
+        @test_nowarn writeMatrixToFile(m2, m2_f)
+        @test_nowarn writeMatrixAndMetadataToFile(m2, m2_meta, m2_meta_f)
+        # Read
+        @test m2 == readMatrixFromFile(m2_f)
+        @test (m2, m2_meta) == readMatrixWithMetadataFromFile(m2_meta_f)
+    finally
+        isfile(m2_f) && rm(m2_f)
+        isfile(m2_meta_f) && rm(m2_meta_f)
+    end
+
+    # Define
+    m3 = rand(Int, 99, 99)
+    m3_meta = [99, 99]
+    m3_f = joinpath(@__DIR__, "m3.data")
+    m3_meta_f = joinpath(@__DIR__, "m3_meta.data")
+    try
+        # Write
+        @test_nowarn writeMatrixToFile(m3, m3_f)
+        @test_nowarn writeMatrixAndMetadataToFile(m3, m3_meta, m3_meta_f)
+        # Read
+        @test m3 == readMatrixFromFile(m3_f)
+        @test (m3, m3_meta) == readMatrixWithMetadataFromFile(m3_meta_f)
+    finally
+        isfile(m3_f) && rm(m3_f)
+        isfile(m3_meta_f) && rm(m3_meta_f)
+    end
+
+    # Define
+    m4 = rand(99, 99)
+    m4_meta = [99, 99]
+    m4_f = joinpath(@__DIR__, "m4.data")
+    m4_meta_f = joinpath(@__DIR__, "m4_meta.data")
+    try
+        # Write
+        @test_nowarn writeMatrixToFile(m4, m4_f)
+        @test_nowarn writeMatrixAndMetadataToFile(m4, m4_meta, m4_meta_f)
+        # Read
+        @test m4 == readMatrixFromFile(m4_f)
+        @test (m4, m4_meta) == readMatrixWithMetadataFromFile(m4_meta_f)
+    finally
+        isfile(m4_f) && rm(m4_f)
+        isfile(m4_meta_f) && rm(m4_meta_f)
+    end
+    
+    # Define
+    m5 = rand(Int, 500, 299)
+    m5_meta = [500, 299]
+    m5_f = joinpath(@__DIR__, "m5.data")
+    m5_meta_f = joinpath(@__DIR__, "m5_meta.data")
+    try
+        # Write
+        @test_nowarn writeMatrixToFile(m5, m5_f)
+        @test_nowarn writeMatrixAndMetadataToFile(m5, m5_meta, m5_meta_f)
+        # Read
+        @test m5 == readMatrixFromFile(m5_f)
+        @test (m5, m5_meta) == readMatrixWithMetadataFromFile(m5_meta_f)
+    finally
+        isfile(m5_f) && rm(m5_f)
+        isfile(m5_meta_f) && rm(m5_meta_f)
+    end
+    
+    # Define
+    m6 = rand(1, 5)
+    m6_meta = [1, 5]
+    m6_f = joinpath(@__DIR__, "m6.data")
+    m6_meta_f = joinpath(@__DIR__, "m6_meta.data")
+    try
+        # Write
+        @test_nowarn writeMatrixToFile(m6, m6_f)
+        @test_nowarn writeMatrixAndMetadataToFile(m6, m6_meta, m6_meta_f)
+        # Read
+        @test m6 == readMatrixFromFile(m6_f)
+        @test (m6, m6_meta) == readMatrixWithMetadataFromFile(m6_meta_f)
+    finally
+        isfile(m6_f) && rm(m6_f)
+        isfile(m6_meta_f) && rm(m6_meta_f)
+    end
+
+    # Define
+    m7 = rand(666, 888)
+    m7_meta = [666, 888]
+    m7_f = joinpath(@__DIR__, "m7.data")
+    m7_meta_f = joinpath(@__DIR__, "m7_meta.data")
+    try
+        # Write
+        @test_nowarn writeMatrixToFile(m7, m7_f)
+        @test_nowarn writeMatrixAndMetadataToFile(m7, m7_meta, m7_meta_f)
+        # Read
+        @test m7 == readMatrixFromFile(m7_f)
+        @test (m7, m7_meta) == readMatrixWithMetadataFromFile(m7_meta_f)
+    finally
+        isfile(m7_f) && rm(m7_f)
+        isfile(m7_meta_f) && rm(m7_meta_f)
+    end
+    
+end
+
+end # module matrixReadWrite_test
+
+using .matrixReadWrite_test
+matrixReadWrite_test.test()

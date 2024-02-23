@@ -61,4 +61,124 @@ function reverseInt(i::Union{Int64, Int32})::Int
     return reversed_i
 end
 
+"""
+Write a matrix to file. Each row is a line of space-separated numbers.
+If the file doesn't exist, it will be created. If it does, it will be overwritten.
+"""
+function writeMatrixToFile(
+    m::Matrix{T},
+    path::String
+) where T <: Number
+    m_height = size(m)[1]
+
+    try
+        open(path, "w") do file
+            for row = 1:m_height
+                line = join(m[row, :], " ")
+                println(file, line)
+            end
+        end
+    catch e
+        println("Failed to write to file $path: $e")
+    end
+end
+
+"""
+Write a matrix to file, with metadata. The metadata is written first as space-separated numbers.
+Each row of the matrix is a new line of space-separated numbers.
+"""
+function writeMatrixAndMetadataToFile(
+    m::Matrix{T},
+    metadata::Vector{Int},
+    path::String
+) where T <: Number
+    m_height = size(m)[1]
+
+    try
+        open(path, "w") do file
+            metadata_string = join(metadata, " ")
+            println(file, metadata_string)
+            for row = 1:m_height
+                line = join(m[row, :], " ")
+                println(file, line)
+            end
+        end
+    catch e
+        println("Failed to write to file $path: $e")
+    end
+end
+
+"""
+Read in a matrix from a file. Each row is a line of space-separated numbers.
+"""
+function readMatrixFromFile(
+    path::String
+)::Matrix{Number}
+    isfile(path) || throw(ArgumentError("File not found at $path"))
+
+    matrix_as_vector = Vector{Vector{Number}}();
+    tryparse_int_xform = x -> tryparse(Int, x)
+    tryparse_float_xform = x -> tryparse(Float64, x)
+
+    try
+        for line in eachline(path)
+            tokenised_line = split(line, " ")
+            parsed_line = tryparse_int_xform.(tokenised_line)
+            if parsed_line[1] == nothing
+                parsed_line = tryparse_float_xform.(tokenised_line)
+            end
+            push!(matrix_as_vector, parsed_line)
+        end
+    catch e
+        println("Failed to parse $path: $e")
+    end
+
+    # Convert 2d vector to a matrix (transpose as each vector is a row)
+    return vcat([x' for x in matrix_as_vector]...)
+end
+
+"""
+Read in a matrix from a file. 
+Each row is a line of space-separated numbers.
+The first line contains metadata about the matrix, also as space-separated numbers.
+"""
+function readMatrixWithMetadataFromFile(
+    path::String
+)::Tuple{Matrix{Number}, Vector{Number}}
+    isfile(path) || throw(ArgumentError("File not found at $path"))
+
+    matrix_as_vector = Vector{Vector{Number}}();
+    metadata_as_vector = Vector{Number}();
+    tryparse_int_xform = x -> tryparse(Int, x)
+    tryparse_float_xform = x -> tryparse(Float64, x)
+
+    try
+        open(path) do io
+            metadata_line = readline(io)
+            tokenised_metadata_line = split(metadata_line, " ")
+            metadata_as_vector = tryparse_int_xform.(tokenised_metadata_line)
+            if metadata_as_vector[1] == nothing
+                metadata_as_vector = tryparse_float_xform.(tokenised_metadata_line)
+            end
+            while !eof(io)
+                line = readline(io)
+                tokenised_line = split(line, " ")
+                parsed_line = tryparse_int_xform.(tokenised_line)
+                if parsed_line[1] == nothing
+                    parsed_line = tryparse_float_xform.(tokenised_line)
+                end
+                push!(matrix_as_vector, parsed_line)
+            end
+        end
+    catch e
+        println("Failed to parse $path: $e")
+    end
+
+    # Convert 2d vector to a matrix (transpose as each vector is a row)
+    return (
+        vcat([x' for x in matrix_as_vector]...), 
+        metadata_as_vector
+    )
+end
+
 end # module UtilityFunctionsModule
