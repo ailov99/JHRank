@@ -181,4 +181,40 @@ function readMatrixWithMetadataFromFile(
     )
 end
 
+
+"""
+Semi-optimised primality check
+"""
+function isPrime(n::Int)
+    (1 < n <= 3) && return true
+    (n <= 1 || n % 2 == 0 || n % 3 == 0) && return false
+    
+    i = 3
+    while i*i <= n
+        (n % i == 0 || n % (i+2) == 0) && return false
+        i += 6
+    end
+
+    return true
+end
+
+"""
+The well-known "Sieve of Eratosthenes"
+"""
+function findPrimesUpTo(up_to::Int)::Vector{Int}
+    primes = Vector{Int}(undef, 0)
+    is_prime_list = [true for i=1:up_to]
+
+    for n = 2:(up_to-1)
+        if is_prime_list[n]
+            push!(primes, n)
+            for i = n*n:n:(up_to-1)
+                is_prime_list[i] = false
+            end
+        end
+    end
+
+    return primes
+end
+
 end # module UtilityFunctionsModule

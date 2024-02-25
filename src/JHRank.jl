@@ -11,10 +11,13 @@ using .UtilityFunctionsModule:
     readMatrixFromFile,
     readMatrixWithMetadataFromFile,
     writeMatrixToFile,
-    writeMatrixAndMetadataToFile
+    writeMatrixAndMetadataToFile,
+    isPrime,
+    findPrimesUpTo
 export getIntDigits, getDigitAt, reverseInt,
     readMatrixFromFile, readMatrixWithMetadataFromFile,
-    writeMatrixToFile, writeMatrixAndMetadataToFile
+    writeMatrixToFile, writeMatrixAndMetadataToFile,
+    isPrime, findPrimesUpTo
 
 using .EasyModule:
     beautifulDays,
