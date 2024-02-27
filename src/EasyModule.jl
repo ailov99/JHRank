@@ -192,4 +192,58 @@ function viralAdvertising(n::Int)::Int
     return all_likes_by_day_n
 end
 
+"""
+    libraryFine(
+        d1::Int,
+        m1::Int,
+        y1::Int,
+        d2::Int,
+        m2::Int,
+        y2::Int
+    )
+
+Your local library needs your help! Given the expected and actual return dates for a library book, create a program that 
+calculates the fine (if any). The fee structure is as follows:
+- If the book is returned on or before the expected return date, no fine will be charged (i.e.: fine = 0).
+- If the book is returned after the expected return day but still within the same calendar month and year as the expected 
+  return date, fine = 15 Hackos x (the number of days late).
+- If the book is returned after the expected return month but still within the same calendar year as the expected 
+  return date, the fine = 500 Hackos x (the number of months late).
+- If the book is returned after the calendar year in which it was expected, there is a fixed fine of  10_000 Hackos.
+Charges are based only on the least precise measure of lateness. For example, whether a book is due January 1, 2017 or December 31, 2017, 
+if it is returned January 1, 2018, that is a year late and the fine would be 10_000 Hackos.
+
+# Arguments
+- `d1` = returned day
+- `m1` = returned month
+- `y1` = returned year
+- `d2` = due day
+- `m2` = due month
+- `y2` = due year
+
+# Output
+The fine
+"""
+function libraryFine(
+    d1::Int,
+    m1::Int,
+    y1::Int,
+    d2::Int,
+    m2::Int,
+    y2::Int
+)
+    # Late or early by year/s
+    (y1 > y2) && return 10_000
+    (y1 < y2) && return 0
+
+    # Late or early by month/s
+    (m1 > m2) && return ((m1 - m2) * 500)
+    (m1 < m2) && return 0
+
+    # Late by day/s
+    (d1 > d2) && return ((d1 - d2) * 15)
+
+    return 0
+end
+
 end # module EasyModule

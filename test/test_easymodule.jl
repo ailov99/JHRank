@@ -142,3 +142,49 @@ end # module viralAdvertising_test
 
 using .viralAdvertising_test
 viralAdvertising_test.test()
+
+module libraryFine_test
+
+using JHRank
+using JHRank.EasyModule
+using Test
+
+function test()
+    @test libraryFine(
+        9, 6, 2015, 
+        6, 6, 2015
+    ) == 45
+    @test libraryFine(
+        1, 1, 2013,
+        31, 12, 2012
+    ) == 10_000
+    @test libraryFine(
+        31, 4, 2013,
+        31, 3, 2013
+    ) == 500
+    @test libraryFine(
+        1, 4, 2013,
+        31, 3, 2013
+    ) == 500
+    @test libraryFine(
+        31, 3, 2013,
+        1, 3, 2013
+    ) == 450
+    @test libraryFine(
+        15, 5, 2013,
+        16, 5, 2013
+    ) == 0
+    @test libraryFine(
+        31, 4, 2010,
+        1, 6, 2010
+    ) == 0
+    @test libraryFine(
+        31, 12, 2010,
+        1, 1, 20011
+    ) == 0
+end
+
+end # module libraryFine_test
+
+using .libraryFine_test
+libraryFine_test.test()
