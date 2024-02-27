@@ -188,3 +188,21 @@ end # module libraryFine_test
 
 using .libraryFine_test
 libraryFine_test.test()
+
+module maximizingXor_test
+
+using JHRank
+using JHRank.EasyModule
+using Test
+
+function test()
+    @test maximizingXor(5, 5) == 0
+    @test maximizingXor(1, 2) == 3
+    @test maximizingXor(10, 15) == 7
+    @test maximizingXor(11, 100) == 127
+end
+
+end # module maximizingXor_test
+
+using .maximizingXor_test
+maximizingXor_test.test()

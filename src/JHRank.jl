@@ -25,10 +25,11 @@ using .EasyModule:
     cutTheSticks,
     circularArrayRotation,
     viralAdvertising,
-    libraryFine
+    libraryFine,
+    maximizingXor
 export beautifulDays, findDigits, cutTheSticks,
     circularArrayRotation, viralAdvertising,
-    libraryFine
+    libraryFine, maximizingXor
 
 using .MediumModule:
     formingMagicSquare

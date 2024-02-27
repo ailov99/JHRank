@@ -246,4 +246,29 @@ function libraryFine(
     return 0
 end
 
+"""
+    maximizingXor(l::Int, r::Int)
+
+Given two integers, l and r, find the maximal value of a xor b, where l <= a <= b <= r
+
+# Arguments
+- `l` = lower bound
+- `r` = upper bound
+
+# Output
+The max value of a xor b, where a & b are within the range l to r
+"""
+function maximizingXor(l::Int, r::Int)
+    max_xor = 0
+    for i = l:(r-1)
+        for j = (i+1):r
+            xored = i ⊻ j
+            if xored > max_xor
+                max_xor = xored
+            end
+        end
+    end
+    return max_xor
+end
+
 end # module EasyModule
