@@ -206,3 +206,27 @@ end # module maximizingXor_test
 
 using .maximizingXor_test
 maximizingXor_test.test()
+
+module appendAndDelete_test
+
+using JHRank
+using JHRank.EasyModule
+using Test
+
+function test()
+    @test appendAndDelete("abc", "def", 6) == true
+    @test appendAndDelete("rollercoaster", "rollercoaster", 0) == true
+    @test appendAndDelete("rollercoaster", "rollerrcoaster", 0) == false
+    @test appendAndDelete("rollercoaster", "rollerrcoaster", 14) == false
+    @test appendAndDelete("rollercoaster", "rollerrcoaster", 15) == true
+    @test appendAndDelete("hackerhappy", "hackerrank", 9) == true
+    @test appendAndDelete("aba", "aba", 7) == true
+    @test appendAndDelete("a", "a", 200) == true
+    @test appendAndDelete("ashley", "ash", 2) == false
+    @test appendAndDelete("qwerasdf", "qwerbsdf", 6) == false
+end
+
+end # module appendAndDelete_test
+
+using .appendAndDelete_test
+appendAndDelete_test.test()

@@ -271,4 +271,55 @@ function maximizingXor(l::Int, r::Int)
     return max_xor
 end
 
+"""
+    appendAndDelete(s::String, t::String, k::Int)
+
+You have two strings of lowercase English letters. You can perform two types of operations on the first string:
+1. Append a lowercase English letter to the end of the string.
+2. Delete the last character of the string. Performing this operation on an empty string results in an empty string.
+Given an integer, k, and two strings, s and t, determine whether or not you can convert s to t by performing exactly k of the 
+above operations on s.
+
+# Arguments
+- `s` = first string
+- `t` = second string
+- `k` = number of deletions and additions to perform on t to make it == s
+
+# Output
+If the opperation is possible given the 2 strings and number of operations k
+"""
+function appendAndDelete(
+    s::String,
+    t::String,
+    k::Int
+)
+    # First find the overlap between s and t, from left to right
+    overlap_length = 0
+    for i = 1:min(length(s), length(t))
+        if s[i] == t[i]
+            overlap_length += 1
+        else
+            break
+        end
+    end
+
+    # Special case where t needs to be fully deleted
+    if 2*length(t) < k
+        return true
+    end
+
+    # How many chars to trim
+    to_delete = length(t) - overlap_length
+    # How many chars to append once trimmed
+    to_append = length(s) - overlap_length
+
+    # Check if it's even feasible
+    operations_to_make = to_delete + to_append
+    (operations_to_make > k) && return false
+
+    # to_delete + to_append == k + x*2 
+    # (a multiple of 2 signifies `empty` operations e.g. add a char and delete repeatedly)
+    return ((to_delete + to_append - k) % 2 == 0)
+end
+
 end # module EasyModule

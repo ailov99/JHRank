@@ -26,10 +26,11 @@ using .EasyModule:
     circularArrayRotation,
     viralAdvertising,
     libraryFine,
-    maximizingXor
+    maximizingXor,
+    appendAndDelete
 export beautifulDays, findDigits, cutTheSticks,
     circularArrayRotation, viralAdvertising,
-    libraryFine, maximizingXor
+    libraryFine, maximizingXor, appendAndDelete
 
 using .MediumModule:
     formingMagicSquare
