@@ -230,3 +230,20 @@ end # module appendAndDelete_test
 
 using .appendAndDelete_test
 appendAndDelete_test.test()
+
+module equalizeArray_test
+
+using JHRank
+using JHRank.EasyModule
+using Test
+
+function test()
+    @test equalizeArray([1,2,2,3]) == 2
+    @test equalizeArray([3,3,2,1,3]) == 2
+    @test equalizeArray([1,2,3,4,5,6,7,8,9,10]) == 9
+    @test equalizeArray([1,1,1,534,64537,4,645,234,45,1,1,1,57453]) == 7
+    @test equalizeArray([1 for i = 1:500]) == 0
+    @test equalizeArray([1,2,3,1,2,3,3,3]) == 4
+end
+
+end # module equalizeArray_test

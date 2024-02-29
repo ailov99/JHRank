@@ -27,10 +27,12 @@ using .EasyModule:
     viralAdvertising,
     libraryFine,
     maximizingXor,
-    appendAndDelete
+    appendAndDelete,
+    equalizeArray
 export beautifulDays, findDigits, cutTheSticks,
     circularArrayRotation, viralAdvertising,
-    libraryFine, maximizingXor, appendAndDelete
+    libraryFine, maximizingXor, appendAndDelete,
+    equalizeArray
 
 using .MediumModule:
     formingMagicSquare

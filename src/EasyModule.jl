@@ -322,4 +322,38 @@ function appendAndDelete(
     return ((to_delete + to_append - k) % 2 == 0)
 end
 
+"""
+    equalizeArray(arr::Vector{Int})
+
+Given an array of integers, determine the minimum number of elements to delete to leave only elements of equal value.
+
+# Arguments
+- `arr` = input array of integers
+
+# Output
+Min number of elements to delete from `arr` to leavy only elements of equal size
+"""
+function equalizeArray(arr::Vector{Int})
+    # Keep track of occurrences for each integer
+    freqs = Dict{Int, Int}()
+    # And the max occurency (frequency) so we can do everything in 1 pass (0(n) + dict access)
+    max_freq = 0
+
+    # Scan the array
+    for i in arr
+        # Update dict record
+        if haskey(freqs, i)
+            freqs[i] += 1
+        else
+            freqs[i] = 1
+        end
+        # Update max
+        if freqs[i] > max_freq
+            max_freq = freqs[i]
+        end
+    end
+
+    return (length(arr) - max_freq)
+end
+
 end # module EasyModule
