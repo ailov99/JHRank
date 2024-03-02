@@ -35,8 +35,9 @@ export beautifulDays, findDigits, cutTheSticks,
     equalizeArray
 
 using .MediumModule:
-    formingMagicSquare
-export formingMagicSquare
+    formingMagicSquare,
+    nonDivisibleSubset
+export formingMagicSquare, nonDivisibleSubset
 
 using .HardModule:
     matrixRotation

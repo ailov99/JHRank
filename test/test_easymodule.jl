@@ -247,3 +247,6 @@ function test()
 end
 
 end # module equalizeArray_test
+
+using .equalizeArray_test
+equalizeArray_test.test()

@@ -60,4 +60,48 @@ function formingMagicSquare(s::Vector{Vector{Int32}})::Int
     return min_cost
 end
 
+"""
+    nonDivisibleSubset(k::Int, s::Vector{Int})
+
+Given a set of distinct integers S, return the size of a maximal subset of S (S') where the sum of any 2 numbers 
+in S' is not evenly divisible by a number K.
+
+# Arguments
+- `k` = K
+- `s` = S
+
+# Output
+The size of S'
+"""
+function nonDivisibleSubset(k::Int, s::Vector{Int})
+    # We will "group" numbers in s by their remainder when divided by k
+    # First we count frequency of remainders, for each number in s, when divided by k
+    remainder_freq = zeros(Int, k-1)
+    s_has_div_by_k = false
+    for i in s
+        remainder = i % k
+        if remainder == 0
+            s_has_div_by_k = true
+        else
+            remainder_freq[remainder] += 1
+        end
+    end
+
+    max_subset_size = 0
+    # Numbers divisible by k can only be in s' once (as otherwise they would form a divisible pair)
+    s_has_div_by_k && (max_subset_size += 1)
+    # Same for numbers divisible by k / 2
+    (k % 2 == 0) && (max_subset_size += 1)
+
+    # 2 numbers whose remainders (when divided by k) add up to k cannot be in s'
+    # so we only add up the size of the bigger group
+    for i=1:(div(k,2))
+        # We already accounted for remainders of k / 2 if k is even
+        (i == (k-i)) && continue
+        max_subset_size += max(remainder_freq[i], remainder_freq[k-i])
+    end
+
+    return max_subset_size
+end
+
 end # Module MediumModule

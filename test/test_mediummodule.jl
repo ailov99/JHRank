@@ -28,7 +28,31 @@ function test()
     @test formingMagicSquare(m3) == 4
 end
 
+end # module formingMagicSquare_test
+
 using .formingMagicSquare_test
 formingMagicSquare_test.test()
 
-end # module formingMagicSquare_test
+module nonDivisibleSubset_test
+
+using JHRank
+using JHRank.MediumModule
+using Test
+
+function test()
+    # HR
+    @test nonDivisibleSubset(
+        4, [19, 10, 12, 10, 24, 25, 22]
+    ) == 3
+    @test nonDivisibleSubset(
+        3, [1, 7, 2, 4]
+    ) == 3
+    @test nonDivisibleSubset(
+        7, [278, 576, 496, 727, 410, 124, 338, 149, 209, 702, 282, 718, 771, 575, 436]
+    ) == 11
+end
+
+end # module nonDivisibleSubset_test
+
+using .nonDivisibleSubset_test
+nonDivisibleSubset_test.test()
