@@ -104,4 +104,37 @@ function nonDivisibleSubset(k::Int, s::Vector{Int})
     return max_subset_size
 end
 
+"""
+    countSort(arr::Array{Array{String}})
+
+Use the counting sort to order a list of strings associated with integers. If two strings are associated with the same integer, they must be printed in their original order, 
+i.e. your sorting algorithm should be stable. There is one other twist: strings in the first half of the array are to be replaced with the character - (dash, ascii 45 decimal).
+Insertion Sort and the simple version of Quicksort are stable, but the faster in-place version of Quicksort is not since it scrambles around elements while sorting.
+Design your counting sort to be stable.
+
+# Arguments
+- `arr` = an input array of pairs (integer : string associated with the integer)
+
+# Output
+The string resulting from stable-sorting the input array by integers and then concatenating the strings in-order 
+(bearing in mind strings from the first half of the orriginal array ought to be replaced by dashes `-`)
+"""
+function countSort(arr::Vector{Vector{String}})
+    sorted_arr = [[] for i = 1:100] # Constraint 0 <= integer in pair < 100 from problem definition
+
+    # Linear scan of input array to group strings into buckets
+    for i = 1:length(arr)
+        bucket_index = parse(Int, arr[i][1]) + 1 # julia indexing requires +1
+        # Note: We push strings with spaces appended so we can eventually just flatten the array
+        if i <= length(arr)/2
+            push!(sorted_arr[bucket_index], "- ")
+        else
+            push!(sorted_arr[bucket_index], "$(arr[i][2]) ")
+        end
+    end
+
+    # Flatten array of arrays and concatenate all strings
+    return chop(reduce(*, vcat(sorted_arr...)))
+end
+
 end # Module MediumModule
