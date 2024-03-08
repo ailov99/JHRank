@@ -356,4 +356,31 @@ function equalizeArray(arr::Vector{Int})
     return (length(arr) - max_freq)
 end
 
+"""
+    repeatedString(s::String, n::Int)
+
+There is a string s of lowercase English letters that is repeated infinitely many times. 
+Given an integer n find and return the number of letter 'a's in the first n letters of the infinite string.
+
+# Arguments
+- `s` = input string
+- `n` = number of characters to scan, in s, for 'a's
+
+# Output
+The number of 'a' letters found in the first n letters of s repeated infinitely
+"""
+function repeatedString(s::String, n::Int)
+    # First find how many a's in s and how many full s's we have
+    s_repeated = div(n, length(s))
+    a_in_s = sum([1 for x in s if x == 'a'])
+
+    # Then take care of the remainder
+    counter = a_in_s * s_repeated
+    for i = 1:(n % length(s))
+        (s[i] == 'a') && (counter += 1)
+    end
+
+    return counter
+end
+
 end # module EasyModule

@@ -28,11 +28,12 @@ using .EasyModule:
     libraryFine,
     maximizingXor,
     appendAndDelete,
-    equalizeArray
+    equalizeArray,
+    repeatedString
 export beautifulDays, findDigits, cutTheSticks,
     circularArrayRotation, viralAdvertising,
     libraryFine, maximizingXor, appendAndDelete,
-    equalizeArray
+    equalizeArray, repeatedString
 
 using .MediumModule:
     formingMagicSquare,

@@ -250,3 +250,21 @@ end # module equalizeArray_test
 
 using .equalizeArray_test
 equalizeArray_test.test()
+
+module repeatedString_test
+
+using JHRank
+using JHRank.EasyModule
+using Test
+
+function test()
+    @test repeatedString("abcac", 10) == 4
+    @test repeatedString("aba", 10) == 7
+    @test repeatedString("a", 9999) == 9999
+    @test repeatedString("a", 1000000000000) == 1000000000000
+end
+
+end # module repeatedString_test
+
+using .repeatedString_test
+repeatedString_test.test()
