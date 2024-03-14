@@ -29,11 +29,12 @@ using .EasyModule:
     maximizingXor,
     appendAndDelete,
     equalizeArray,
-    repeatedString
+    repeatedString,
+    serviceLane
 export beautifulDays, findDigits, cutTheSticks,
     circularArrayRotation, viralAdvertising,
     libraryFine, maximizingXor, appendAndDelete,
-    equalizeArray, repeatedString
+    equalizeArray, repeatedString, serviceLane
 
 using .MediumModule:
     formingMagicSquare,

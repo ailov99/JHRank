@@ -268,3 +268,25 @@ end # module repeatedString_test
 
 using .repeatedString_test
 repeatedString_test.test()
+
+module serviceLane_test
+
+using JHRank
+using JHRank.EasyModule
+using Test
+
+function test()
+    @test serviceLane(
+        [2, 3, 1, 2, 3, 2, 3, 3], 
+        [[0,3], [4,6], [6,7], [3,5], [0,7]]
+    ) == [1, 2, 3, 2, 1]
+    @test serviceLane(
+        [1, 2, 2, 2, 1],
+        [[2,3], [1,4], [2,4], [2,4], [2,3]]
+    ) == [2, 1, 1, 1, 2]
+end
+
+end # module serviceLane_test
+
+using .serviceLane_test
+serviceLane_test.test()

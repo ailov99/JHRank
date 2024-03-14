@@ -383,4 +383,31 @@ function repeatedString(s::String, n::Int)
     return counter
 end
 
+"""
+    serviceLane(widths::Vector{Int}, cases::Vector{Vector{Int}})
+
+A driver is driving on the freeway. The check engine light of his vehicle is on, and the driver wants to get service immediately. 
+Luckily, a service lane runs parallel to the highway. It varies in width along its length.
+You will be given an array of widths at points along the road (indices), then a list of the indices of entry and exit points. 
+Considering each entry and exit point pair, calculate the maximum size vehicle that can travel that segment of the service lane safely.
+
+# Arguments
+- `n` = widths of the service lane along the road
+- `cases` = each element contains the entry and exit indices for a segment of the road/service lane to consider, inclusive
+
+# Output
+The maximum width vehicle that can pass through each segment of the service lane, as described in `cases`
+"""
+function serviceLane(widths::Vector{Int}, cases::Vector{Vector{Int}})
+    vehicles = []
+    
+    for case in cases
+        segment_start = case[1] + 1 # Julia indexing
+        segment_end = case[2] + 1 # Julia indexing
+        push!(vehicles, minimum(widths[segment_start:segment_end]))
+    end
+
+    return vehicles
+end
+
 end # module EasyModule
