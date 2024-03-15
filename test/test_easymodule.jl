@@ -290,3 +290,21 @@ end # module serviceLane_test
 
 using .serviceLane_test
 serviceLane_test.test()
+
+module jumpingOnClouds_test
+
+using JHRank
+using JHRank.EasyModule
+using Test
+
+function test()
+    @test jumpingOnClouds([0, 1, 0, 0, 0, 1, 0]) == 3
+    @test jumpingOnClouds([0, 0, 1, 0, 0, 1, 0]) == 4
+    @test jumpingOnClouds([0, 0, 0, 0, 1, 0]) == 3
+    @test jumpingOnClouds([0, 0, 0, 1, 0, 0]) == 3
+end
+
+end # module jumpingOnClouds_test
+
+using .jumpingOnClouds_test
+jumpingOnClouds_test.test()

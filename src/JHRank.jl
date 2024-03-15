@@ -30,11 +30,13 @@ using .EasyModule:
     appendAndDelete,
     equalizeArray,
     repeatedString,
-    serviceLane
+    serviceLane,
+    jumpingOnClouds
 export beautifulDays, findDigits, cutTheSticks,
     circularArrayRotation, viralAdvertising,
     libraryFine, maximizingXor, appendAndDelete,
-    equalizeArray, repeatedString, serviceLane
+    equalizeArray, repeatedString, serviceLane,
+    jumpingOnClouds
 
 using .MediumModule:
     formingMagicSquare,
