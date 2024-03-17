@@ -41,9 +41,10 @@ export beautifulDays, findDigits, cutTheSticks,
 using .MediumModule:
     formingMagicSquare,
     nonDivisibleSubset,
-    countSort
+    countSort,
+    timeInWords
 export formingMagicSquare, nonDivisibleSubset,
-    countSort
+    countSort, timeInWords
 
 using .HardModule:
     matrixRotation

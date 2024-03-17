@@ -137,4 +137,58 @@ function countSort(arr::Vector{Vector{String}})
     return chop(reduce(*, vcat(sorted_arr...)))
 end
 
+
+"""
+    timeInWords(h::Int, m::Int)
+
+Given the time in numerals we may convert it into words.
+At minutes == 0, use o' clock. For 1 <= minutes <= 30, use past, and  for 30 < minutes use to. Note the space between 
+the apostrophe and clock in o' clock. Write a program which prints the time in words for the input given in the format described.
+
+# Arguments
+- `h` = number of hours
+- `m` = number of minutes
+
+# Output
+The time in words, as described above
+"""
+function timeInWords(h::Int, m::Int)
+    # Num -> Word lookup
+    num_to_str = Dict(
+        1 => "one", 2 => "two", 3 => "three", 4 => "four",
+        5 => "five", 6 => "six", 7 => "seven", 8 => "eight",
+        9 => "nine", 10 => "ten", 11 => "eleven", 12 => "twelve",
+        13 => "thirteen", 15 => "quarter", 20 => "twenty", 30 => "half"
+    )
+
+    # o'clock case is easy
+    (m == 0) && return "$(num_to_str[h]) o' clock"
+
+    # construct minutes part
+    use_past = (m <= 30)
+    minutes_part_num = use_past ? m : (60 - m)
+
+    buffer = IOBuffer()
+    if haskey(num_to_str, minutes_part_num)
+        minutes_part_str = num_to_str[minutes_part_num]
+        half_or_quarter = (minutes_part_num == 30) || (minutes_part_num == 15)
+        minutes_word = half_or_quarter ? "" : (minutes_part_num) == 1 ? "minute " : "minutes "
+        print(buffer, "$(minutes_part_str) $(minutes_word)")
+    elseif 14 <= minutes_part_num <= 19
+        minutes_part_str = num_to_str[minutes_part_num%10]
+        print(buffer, "$(minutes_part_str)teen minutes ")
+    else
+        minutes_part_str = "$(num_to_str[20]) $(num_to_str[minutes_part_num%20])"
+        print(buffer,  "$(minutes_part_str) minutes ")
+    end
+
+    # then hours part
+    print(buffer, "$(use_past ? "past" : "to") ")
+    hour_part_num = use_past ? h : h == 12 ? 1 : (h+1)
+    hour_part_str = num_to_str[hour_part_num]
+    print(buffer, "$(hour_part_str)")
+
+    return String(take!(buffer))
+end
+
 end # Module MediumModule

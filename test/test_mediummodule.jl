@@ -106,3 +106,32 @@ end # module countSort_test
 
 using .countSort_test
 countSort_test.test()
+
+module timeInWords_test
+
+using JHRank
+using JHRank.MediumModule
+using Test
+
+function test()
+    @test timeInWords(5, 47) == "thirteen minutes to six"
+    @test timeInWords(3, 0) == "three o' clock"
+    @test timeInWords(7, 15) == "quarter past seven"
+    @test timeInWords(1, 1) == "one minute past one"
+    @test timeInWords(11, 30) == "half past eleven"
+    @test timeInWords(5, 0) == "five o' clock"
+    @test timeInWords(5, 1) == "one minute past five"
+    @test timeInWords(5, 10) == "ten minutes past five"
+    @test timeInWords(5, 15) == "quarter past five"
+    @test timeInWords(5, 30) == "half past five"
+    @test timeInWords(5, 40) == "twenty minutes to six"
+    @test timeInWords(5, 45) == "quarter to six"
+    @test timeInWords(5, 28) == "twenty eight minutes past five"
+    @test timeInWords(12, 59) == "one minute to one"
+    @test timeInWords(12, 29) == "twenty nine minutes past twelve"
+end
+
+end # module timeInWords_test
+
+using .timeInWords_test
+timeInWords_test.test()
