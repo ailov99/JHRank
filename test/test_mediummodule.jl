@@ -135,3 +135,20 @@ end # module timeInWords_test
 
 using .timeInWords_test
 timeInWords_test.test()
+
+module hackerlandRadioTransmitters_test
+
+using JHRank
+using JHRank.MediumModule
+using Test
+
+function test()
+    @test hackerlandRadioTransmitters([1,2,3,5,9],1) == 3
+    @test hackerlandRadioTransmitters([1,2,3,4,5],1) == 2
+    @test hackerlandRadioTransmitters([7,2,4,6,5,9,12,11],2) == 3
+end
+
+end # module hackerlandRadioTransmitters_test
+
+using .hackerlandRadioTransmitters_test
+hackerlandRadioTransmitters_test.test()

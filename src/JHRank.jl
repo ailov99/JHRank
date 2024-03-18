@@ -42,9 +42,10 @@ using .MediumModule:
     formingMagicSquare,
     nonDivisibleSubset,
     countSort,
-    timeInWords
+    timeInWords,
+    hackerlandRadioTransmitters
 export formingMagicSquare, nonDivisibleSubset,
-    countSort, timeInWords
+    countSort, timeInWords, hackerlandRadioTransmitters
 
 using .HardModule:
     matrixRotation

@@ -191,4 +191,61 @@ function timeInWords(h::Int, m::Int)
     return String(take!(buffer))
 end
 
+"""
+    hackerlandRadioTransmitters(x::Vector{Int}, k::Int)
+
+Hackerland is a one-dimensional city with houses aligned at integral locations along a road. 
+The Mayor wants to install radio transmitters on the roofs of the city's houses. Each transmitter 
+has a fixed range meaning it can transmit a signal to all houses within that number of units distance away.
+Given a map of Hackerland and the transmission range, determine the minimum number of transmitters so that 
+every house is within range of at least one transmitter. Each transmitter must be installed on top of an existing house.
+
+# Arguments
+- `x` = list of house locations in the city 
+- `k` = radius of each transmitter
+
+# Output
+The minimum number of transmitters needed to cover the whole city
+"""
+function hackerlandRadioTransmitters(x::Vector{Int}, k::Int)
+    # Build a map of the city where TRUE represents a house needing connection
+    no_coverage_map = fill(false, maximum(x))
+    for house_i in x
+        no_coverage_map[house_i] = true
+    end
+
+    # Now scan the map left -> right:
+    # 1. Find a house needing connection
+    # 2. Place a transmitter as far to the right of it as possible
+    # 3. Set everything within the transmitter's radius to FALSE
+    transmitters = 0
+    for i = 1:length(no_coverage_map)
+        # Skip if no house needing connection
+        !no_coverage_map[i] && continue
+
+        # Find the furthest location we could place a transmitter at to cover house at `i`
+        location_furthest_from_i = min(length(no_coverage_map), i + k)
+        transmitter_location = location_furthest_from_i
+        for j = 0:k
+            house_j_location = location_furthest_from_i - j
+            # First house found is the "ideal" place
+            if no_coverage_map[house_j_location]
+                transmitter_location = house_j_location
+                break
+            end
+        end
+
+        # Place transmitter
+        leftmost_house = max(1, transmitter_location - k)
+        rightmost_house = min(length(no_coverage_map), transmitter_location + k)
+        for i = leftmost_house:rightmost_house
+            no_coverage_map[i] = false
+        end
+        transmitters += 1
+
+    end
+
+    return transmitters
+end
+
 end # Module MediumModule
