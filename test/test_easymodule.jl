@@ -308,3 +308,33 @@ end # module jumpingOnClouds_test
 
 using .jumpingOnClouds_test
 jumpingOnClouds_test.test()
+
+module taumBday_test
+
+using JHRank
+using JHRank.EasyModule
+using Test
+
+function test()
+    @test taumBday(3, 5, 3, 4, 1) == 29
+    @test taumBday(10, 10, 1, 1, 1) == 20
+    @test taumBday(5, 5, 2, 3, 4) == 25
+    @test taumBday(3, 6, 9, 1, 1) == 12
+    @test taumBday(7, 7, 4, 2, 1) == 35
+    @test taumBday(3, 3, 1, 9, 2) == 12
+    @test taumBday(27_984, 1_402,  619_246, 615_589, 247_954) == 18_192_035_842
+    @test taumBday(95_677, 39_394, 86_983,  311_224, 588_538) == 20_582_630_747
+    @test taumBday(68_406, 12_718, 532_909, 315_341, 201_009) == 39_331_944_938
+    @test taumBday(15_242, 95_521, 712_721, 628_729, 396_706) == 70_920_116_291
+    @test taumBday(21_988, 67_781, 645_748, 353_796, 333_199) == 38_179_353_700
+    @test taumBday(22_952, 80_129, 502_975, 175_136, 340_236) == 25_577_754_744
+    @test taumBday(38_577, 3_120,  541_637, 657_823, 735_060) == 22_947_138_309
+    @test taumBday(5_943,  69_851, 674_453, 392_925, 381_074) == 31_454_478_354
+    @test taumBday(62_990, 61_330, 310_144, 312_251, 93_023)  == 38_686_324_390
+    @test taumBday(11_152, 43_844, 788_543, 223_872, 972_572) == 18_609_275_504
+end
+
+end # module taumBday_test
+
+using .taumBday_test
+taumBday_test.test()

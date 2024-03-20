@@ -31,12 +31,13 @@ using .EasyModule:
     equalizeArray,
     repeatedString,
     serviceLane,
-    jumpingOnClouds
+    jumpingOnClouds,
+    taumBday
 export beautifulDays, findDigits, cutTheSticks,
     circularArrayRotation, viralAdvertising,
     libraryFine, maximizingXor, appendAndDelete,
     equalizeArray, repeatedString, serviceLane,
-    jumpingOnClouds
+    jumpingOnClouds, taumBday
 
 using .MediumModule:
     formingMagicSquare,

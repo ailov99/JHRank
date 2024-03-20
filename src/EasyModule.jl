@@ -447,4 +447,30 @@ function jumpingOnClouds(c::Vector{Int})
     return jumps
 end
 
+"""
+    taumBday(b, w, bc, wc, z)
+
+Taum is planning to celebrate the birthday of his friend, Diksha. There are two types of gifts that Diksha 
+wants from Taum: one is black and the other is white. To make her happy, Taum has to buy  black gifts and  white gifts.
+- The cost of each black gift is  units.
+- The cost of every white gift is  units.
+- The cost to convert a black gift into white gift or vice versa is  units.
+Determine the minimum cost of Diksha's gifts.
+
+# Arguments
+- `b` = Number of black gifts Diksha wants
+- `w` = Number of white gifts Diksha wants
+- `bc` = Cost of a black gift
+- `wc` = Cost of a white gift
+- `z` = Cost to convert a gift black<->white
+
+# Output
+The minimum cost of Diksha's black + white gifts
+"""
+function taumBday(b, w, bc, wc, z)
+    min_price_b = Int64(min(bc, wc+z))
+    min_price_w = Int64(min(wc, bc+z))
+    return (b*min_price_b + w*min_price_w)
+end
+
 end # module EasyModule
