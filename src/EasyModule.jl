@@ -473,4 +473,59 @@ function taumBday(b, w, bc, wc, z)
     return (b*min_price_b + w*min_price_w)
 end
 
+"""
+    kaprekarNumbers(p, q)
+
+A modified Kaprekar number is a positive whole number with a special property. If you square it, then split 
+the number into two integers and sum those integers, you have the same value you started with.
+Consider a positive whole number `n` with `d` digits. We square `n` to arrive at a number that is either `2*d` digits 
+long or `2*d - 1` digits long. Split the string representation of the square into two parts, `l` and `r`. 
+The right hand part, `r` must be `d` digits long. The left is the remaining substring. Convert those two 
+substrings back to integers, add them and see if you get .
+
+# Arguments
+- `p` = lower limit of range to scan for Kaprekar numbers (incl) 
+- `q` = upper limit of range to scan for Kaprekar numbers (incl)
+
+# Output
+A list of Kaprekar numbers in the range p-q
+"""
+function kaprekarNumbers(p, q)
+    kaprekar_nums = []
+    
+    for n = p:q
+        digits_in_n = getIntDigits(n)
+        n_squared = n*n
+        
+        # Build `l` and `r`
+        digits_in_n_squared = getIntDigits(n_squared)
+        digits_in_r = digits_in_n
+        digits_in_l = digits_in_n_squared - digits_in_r
+
+        r = 0
+        l = 0
+        # Just scan `n_squared` left-right to derive `l` and `r`
+        multiplier_l = 10^(max(digits_in_l,1) - 1)
+        multiplier_r = 10^(max(digits_in_r,1) - 1)
+        for i = 1:digits_in_n_squared
+            # Note: getDigitAt indexes left to right
+            digit = getDigitAt(n_squared, i)
+            if i <= digits_in_l
+                l += multiplier_l*digit
+                multiplier_l = div(multiplier_l, 10)
+            else
+                r += multiplier_r*digit
+                multiplier_r = div(multiplier_r, 10)
+            end
+        end
+
+        # It's a Kaprekar num if the 2 parts sum up to n
+        if (r+l) == n
+            push!(kaprekar_nums, n)
+        end
+    end
+    
+    return kaprekar_nums
+end
+
 end # module EasyModule

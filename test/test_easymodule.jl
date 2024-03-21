@@ -338,3 +338,28 @@ end # module taumBday_test
 
 using .taumBday_test
 taumBday_test.test()
+
+
+module kaprekarNumbers_test
+
+using JHRank
+using JHRank.EasyModule
+using Test
+
+function test()
+    @test kaprekarNumbers(1, 100) == [1, 9, 45, 55, 99]
+    @test kaprekarNumbers(5,5) == []
+    @test kaprekarNumbers(45, 45) == [45]
+    @test kaprekarNumbers(100, 300) == [297]
+    @test kaprekarNumbers(1, 99_999) == [
+        1, 9, 45, 55, 99, 297, 703, 999,
+        2_223, 2_728, 4_950, 5_050, 7_272,
+        7_777, 9_999, 17_344, 22_222, 77_778,
+        82_656, 95_121, 99_999
+    ]
+end
+
+end # module kaprekarNumbers_test
+
+using .kaprekarNumbers_test
+kaprekarNumbers_test.test()
