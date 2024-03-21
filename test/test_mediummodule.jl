@@ -152,3 +152,22 @@ end # module hackerlandRadioTransmitters_test
 
 using .hackerlandRadioTransmitters_test
 hackerlandRadioTransmitters_test.test()
+
+module organizingContainers_test
+
+using JHRank
+using JHRank.MediumModule
+using Test
+
+function test()
+    @test organizingContainers([[1,4],[2,3]]) == "Impossible"
+    @test organizingContainers([[1,1],[1,1]]) == "Possible"
+    @test organizingContainers([[0,2],[1,1]]) == "Impossible"
+    @test organizingContainers([[1,3,1],[2,1,2],[3,3,3]]) == "Impossible"
+    @test organizingContainers([[0,2,1],[1,1,1],[2,0,0]]) == "Possible"
+end
+
+end # module organizingContainers_test
+
+using .organizingContainers_test
+organizingContainers_test.test()

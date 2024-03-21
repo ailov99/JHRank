@@ -248,4 +248,40 @@ function hackerlandRadioTransmitters(x::Vector{Int}, k::Int)
     return transmitters
 end
 
+"""
+    organizingContainers(containers)
+
+David has several containers, each with a number of balls in it. He has just enough containers to sort 
+each type of ball he has into its own container. David wants to sort the balls using his sort method.
+David wants to perform some number of swap operations such that:
+- Each container contains only balls of the same type.
+- No two balls of the same type are located in different containers.
+
+# Arguments
+- `containers` = A 2d vector, describing containers. Where the number of balls of type N in container M is containers[M][N]
+
+# Output
+Returns "Possible" if the sorting via swaps can be done, "Impossible" otherwise
+"""
+function organizingContainers(containers)
+    # Since we are only allowed swaps, the size of each container won't change
+    # So this can be reduced to a problem of finding a container with the exact size
+    # to fit each type of balls
+    cardinality = length(containers)
+    container_capacities = zeros(cardinality)
+    ball_types_count = zeros(cardinality)
+
+    for container_i = 1:length(containers)
+        container = containers[container_i]
+        for ball_type = 1:length(container)
+            ball_type_count_in_container = container[ball_type]
+            ball_types_count[ball_type] += ball_type_count_in_container
+            container_capacities[container_i] += ball_type_count_in_container
+        end
+    end
+
+    # Problem states there are "just enough" containers for each type
+    return issetequal(container_capacities, ball_types_count) ? "Possible" : "Impossible"
+end
+
 end # Module MediumModule
