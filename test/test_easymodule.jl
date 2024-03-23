@@ -363,3 +363,21 @@ end # module kaprekarNumbers_test
 
 using .kaprekarNumbers_test
 kaprekarNumbers_test.test()
+
+module squares_test
+
+using JHRank
+using JHRank.EasyModule
+using Test
+
+function test()
+    @test squares(3, 9) == 2
+    @test squares(17, 24) == 0
+    @test squares(35, 70) == 3
+    @test squares(100, 1_000) == 22
+end
+
+end # module squares_test
+
+using .squares_test
+squares_test.test()

@@ -528,4 +528,25 @@ function kaprekarNumbers(p, q)
     return kaprekar_nums
 end
 
+"""
+    squares(a, b)
+
+Watson likes to challenge Sherlock's math ability. He will provide a starting and ending value that describe 
+a range of integers, inclusive of the endpoints. Sherlock must determine the number of square integers within 
+that range.
+Note: A square integer is an integer which is the square of an integer, e.g. 1, 4, 9, 16, 25.
+
+# Arguments
+- `a` = starting value of the range
+- `b` = ending value of the range
+
+# Output
+The number of square integers within the range a-b inclusive
+"""
+function squares(a, b)
+    lower_bound = ceil(sqrt(a))
+    upper_bound = floor(sqrt(b))
+    return Int(upper_bound - lower_bound + 1)
+end
+
 end # module EasyModule

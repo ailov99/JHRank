@@ -33,12 +33,14 @@ using .EasyModule:
     serviceLane,
     jumpingOnClouds,
     taumBday,
-    kaprekarNumbers
+    kaprekarNumbers,
+    squares
 export beautifulDays, findDigits, cutTheSticks,
     circularArrayRotation, viralAdvertising,
     libraryFine, maximizingXor, appendAndDelete,
     equalizeArray, repeatedString, serviceLane,
-    jumpingOnClouds, taumBday, kaprekarNumbers
+    jumpingOnClouds, taumBday, kaprekarNumbers,
+    squares
 
 using .MediumModule:
     formingMagicSquare,
