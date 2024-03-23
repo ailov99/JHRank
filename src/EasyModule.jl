@@ -549,4 +549,38 @@ function squares(a, b)
     return Int(upper_bound - lower_bound + 1)
 end
 
+"""
+    chocolateFeast(n, c, m)
+
+Little Bobby loves chocolate. He frequently goes to his favorite  store, Penny Auntie, to buy them. They are 
+having a promotion at Penny Auntie. If Bobby saves enough wrappers, he can turn them in for a free chocolate.
+
+# Arguments
+- `n` = money Bobby has
+- `c` = monetary cost of a chocolate
+- `m` = wrapper cost of a chocolate (turn-in)
+
+# Output
+The number of chocolates Bobby can eat after taking full advantage of the promotion
+Note: Little Bobby will always turn in his wrappers if he has enough to get a free chocolate.
+"""
+function chocolateFeast(n, c, m)
+    eaten = 0
+    
+    # Buy as much as possible and eat
+    can_buy = div(n, c)
+    eaten += can_buy
+    
+    # Turn in and keep eating
+    wrappers = can_buy
+    while div(wrappers, m) > 0
+        bought = div(wrappers, m)
+        extra_wrappers = wrappers - bought*m
+        eaten += bought
+        wrappers = bought + extra_wrappers
+    end
+    
+    eaten
+end
+
 end # module EasyModule

@@ -381,3 +381,22 @@ end # module squares_test
 
 using .squares_test
 squares_test.test()
+
+module chocolateFeast_test
+
+using JHRank
+using JHRank.EasyModule
+using Test
+
+function test()
+    @test chocolateFeast(15, 3, 2) == 9
+    @test chocolateFeast(10, 2, 5) == 6
+    @test chocolateFeast(12, 4, 4) == 3
+    @test chocolateFeast(6, 2, 2) == 5
+    @test chocolateFeast(7, 3, 2) == 3
+end
+
+end # module chocolateFeast_test
+
+using .chocolateFeast_test
+chocolateFeast_test.test()
