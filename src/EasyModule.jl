@@ -583,4 +583,48 @@ function chocolateFeast(n, c, m)
     eaten
 end
 
+"""
+    beautifulTriplets(d, arr)
+
+Given a sequence of integers a, a triplet (a[i], a[j], a[k]) is beautiful if:
+- i < j < k
+- a[j] - a[i] = a[k] - a[j] = d
+
+Given an increasing sequence of integers and the value of d, count the number of beautiful triplets in the sequence.
+
+# Arguments
+- `d` = difference between triplets
+- `arr` = array of triplets
+
+# Output
+The number of "beautiful triplets" in the array, as per the description.
+"""
+function beautifulTriplets(d, arr)
+    triplet_count = 0
+    
+    # Optimise with a lookup table
+    lookup = fill(0, maximum(arr) + 1) # Need an extra spot for 0 (julia is 1-indexed)
+
+    # left triplet < mid triplet < right triplet
+    # Scan array where the current element is a potential right triplet
+    for i = 1:length(arr)
+        right_triplet = arr[i]
+        mid_triplet = right_triplet - d
+        left_triplet = mid_triplet - d
+        
+        # Record current triplet in lookup
+        lookup[right_triplet + 1] += 1
+        
+        # Now check if other 2 triplets are known
+        (mid_triplet >= 0 && left_triplet >= 0) || continue
+        mid_triplet_count = lookup[mid_triplet + 1]
+        left_triplet_count = lookup[left_triplet + 1]
+        (mid_triplet_count != 0 && left_triplet_count != 0) || continue
+        # Make sure we count duped triplets (they will be at different indeces)
+        triplet_count += max(mid_triplet_count, left_triplet_count)
+    end 
+    
+    triplet_count
+end
+
 end # module EasyModule

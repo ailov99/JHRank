@@ -400,3 +400,20 @@ end # module chocolateFeast_test
 
 using .chocolateFeast_test
 chocolateFeast_test.test()
+
+module beautifulTriplets_test
+
+using JHRank
+using JHRank.EasyModule
+using Test
+
+function test()
+    @test beautifulTriplets(1, [2,2,3,4,5]) == 3
+    @test beautifulTriplets(3, [1,2,4,5,7,8,10]) == 3
+    @test beautifulTriplets(3, [1,6,7,7,8,10,12,13,14,19]) == 2
+end
+
+end # module beautifulTriplets_test
+
+using .beautifulTriplets_test
+beautifulTriplets_test.test()

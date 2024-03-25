@@ -35,13 +35,14 @@ using .EasyModule:
     taumBday,
     kaprekarNumbers,
     squares,
-    chocolateFeast
+    chocolateFeast,
+    beautifulTriplets
 export beautifulDays, findDigits, cutTheSticks,
     circularArrayRotation, viralAdvertising,
     libraryFine, maximizingXor, appendAndDelete,
     equalizeArray, repeatedString, serviceLane,
     jumpingOnClouds, taumBday, kaprekarNumbers,
-    squares, chocolateFeast
+    squares, chocolateFeast, beautifulTriplets
 
 using .MediumModule:
     formingMagicSquare,
