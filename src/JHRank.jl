@@ -36,13 +36,15 @@ using .EasyModule:
     kaprekarNumbers,
     squares,
     chocolateFeast,
-    beautifulTriplets
+    beautifulTriplets,
+    minimumDistance
 export beautifulDays, findDigits, cutTheSticks,
     circularArrayRotation, viralAdvertising,
     libraryFine, maximizingXor, appendAndDelete,
     equalizeArray, repeatedString, serviceLane,
     jumpingOnClouds, taumBday, kaprekarNumbers,
-    squares, chocolateFeast, beautifulTriplets
+    squares, chocolateFeast, beautifulTriplets,
+    minimumDistance
 
 using .MediumModule:
     formingMagicSquare,

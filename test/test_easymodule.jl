@@ -417,3 +417,19 @@ end # module beautifulTriplets_test
 
 using .beautifulTriplets_test
 beautifulTriplets_test.test()
+
+module minimumDistance_test
+
+using JHRank
+using JHRank.EasyModule
+using Test
+
+function test()
+    @test minimumDistance([3, 2, 1, 2, 3]) == 2
+    @test minimumDistance([7, 1, 3, 4, 1, 7]) == 3
+    @test minimumDistance([1, 2, 3, 4, 10]) == -1
+end
+
+end # module minimumDistance_test
+using .minimumDistance_test
+minimumDistance_test.test()

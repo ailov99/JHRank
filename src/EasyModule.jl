@@ -627,4 +627,45 @@ function beautifulTriplets(d, arr)
     triplet_count
 end
 
+"""
+    minimumDistance(a)
+
+The distance between two array values is the number of indices between them. Given an array `a`, find the 
+minimum distance between any pair of equal elements in the array. If no such value exists, return -1.
+
+# Arguments
+- `a` = array of numbers to scan
+
+# Output
+The shortest distance between any pair of the same numbers, found in a.
+"""
+function minimumDistance(a)
+    # Want to do this in 1 pass to avoid O(n^2) 
+    # We will use 2 lookup tables:
+    # `last_index` keeps track of where (index) in `a` we last saw a number
+    # `shortest_distance` keeps track of the shortest distance between any number 
+    # and that same number, present in a
+    # Note: We will be indexing these as [n+1] foreach n due to Julia's 1-indexing
+    lookup_size = maximum(a) + 1
+    last_index = fill(0, lookup_size)
+    shortest_distance = fill(typemax(Int), lookup_size)
+    
+    for (i, n) in enumerate(a)
+        n_as_index = n + 1
+        if last_index[n_as_index] == 0
+            # First time n is seen
+            last_index[n_as_index] = i
+        else
+            # Have seen n before => record this occurrence
+            distance_from_last_n_seen = i - last_index[n_as_index]
+            last_index[n_as_index] = i
+            shortest_distance[n_as_index] = min(shortest_distance[n_as_index], distance_from_last_n_seen)
+        end
+    end
+    
+    # Return shortest_distance or -1 if no number was seen twice
+    (minimum(shortest_distance) == typemax(Int)) && return -1
+    minimum(shortest_distance)
+end
+
 end # module EasyModule
