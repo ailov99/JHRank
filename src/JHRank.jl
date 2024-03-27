@@ -37,14 +37,15 @@ using .EasyModule:
     squares,
     chocolateFeast,
     beautifulTriplets,
-    minimumDistance
+    minimumDistance,
+    howManyGames
 export beautifulDays, findDigits, cutTheSticks,
     circularArrayRotation, viralAdvertising,
     libraryFine, maximizingXor, appendAndDelete,
     equalizeArray, repeatedString, serviceLane,
     jumpingOnClouds, taumBday, kaprekarNumbers,
     squares, chocolateFeast, beautifulTriplets,
-    minimumDistance
+    minimumDistance, howManyGames
 
 using .MediumModule:
     formingMagicSquare,

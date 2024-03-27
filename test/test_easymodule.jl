@@ -433,3 +433,19 @@ end
 end # module minimumDistance_test
 using .minimumDistance_test
 minimumDistance_test.test()
+
+module howManyGames_test
+
+using JHRank
+using JHRank.EasyModule
+using Test
+
+function test()
+    @test howManyGames(20, 3, 6, 70) == 5
+    @test howManyGames(20, 3, 6, 80) == 6
+    @test howManyGames(20, 3, 6, 85) == 7
+end
+
+end # module howManyGames_test
+using .howManyGames_test
+howManyGames_test.test()

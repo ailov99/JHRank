@@ -668,4 +668,52 @@ function minimumDistance(a)
     minimum(shortest_distance)
 end
 
+"""
+    howManyGames(p, d, m, s)
+
+You wish to buy video games from the famous online video game store Mist.
+Usually, all games are sold at the same price, `p` dollars. However, they are planning to have the seasonal 
+Halloween Sale next month in which you can buy games at a cheaper price. Specifically, the first game will cost `p` dollars, 
+and every subsequent game will cost `d` dollars less than the previous one. This continues until the cost becomes less 
+than or equal to `m` dollars, after which every game will cost `m` dollars. How many games can you buy during the Halloween Sale?
+
+# Arguments
+- `p` = price of the 1st game
+- `d` = the discount from the previous game price
+- `m` = the minimum cost of a game
+- `s` = the starting budget
+
+# Output
+How many games can be bought, given the rules above and the input parameters
+"""
+function howManyGames(p, d, m, s)
+    cost = p
+    money = s
+    
+    # No money for games
+    (money < cost) && (return 0)
+    
+    # Buy first game
+    money -= cost
+    cost -= d
+    games_bought = 1
+    
+    
+    # Buy subsequent games until cost <= m
+    while money >= cost > m
+        money -= cost
+        cost -= d
+        games_bought += 1
+    end
+    
+    # No money left for games
+    (money < cost) && (return games_bought)
+    
+    # Buy the rest at cost == m
+    cost = m
+    (money >= cost) && (games_bought += div(money, cost))
+    
+    games_bought
+end
+
 end # module EasyModule
