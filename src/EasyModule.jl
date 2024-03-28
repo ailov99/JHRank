@@ -754,4 +754,23 @@ function fairRations(B)
     string(loaves_handed_out)
 end
 
+"""
+    bigSorting(unsorted)
+
+Consider an array of numeric strings where each string is a positive number with anywhere 
+from `1` to `10^6` digits. 
+Sort the array's elements in non-decreasing, or ascending order of their integer values and 
+return the sorted array.
+
+# Arguments
+- `unsorted` = the unsorted array of numbers, as strings.
+
+# Output
+The sorted array of numbers, as strings.
+"""
+function bigSorting(unsorted)
+    # Convert to BigInt -> sort -> convert back to String
+    string.(sort((x -> parse(BigInt, x)).(unsorted)))
+end
+
 end # module EasyModule

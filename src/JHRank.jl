@@ -39,14 +39,16 @@ using .EasyModule:
     beautifulTriplets,
     minimumDistance,
     howManyGames,
-    fairRations
+    fairRations,
+    bigSorting
 export beautifulDays, findDigits, cutTheSticks,
     circularArrayRotation, viralAdvertising,
     libraryFine, maximizingXor, appendAndDelete,
     equalizeArray, repeatedString, serviceLane,
     jumpingOnClouds, taumBday, kaprekarNumbers,
     squares, chocolateFeast, beautifulTriplets,
-    minimumDistance, howManyGames, fairRations
+    minimumDistance, howManyGames, fairRations,
+    bigSorting
 
 using .MediumModule:
     formingMagicSquare,
