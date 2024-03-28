@@ -449,3 +449,19 @@ end
 end # module howManyGames_test
 using .howManyGames_test
 howManyGames_test.test()
+
+module fairRations_test
+
+using JHRank
+using JHRank.EasyModule
+using Test
+
+function test()
+    @test fairRations([4, 5, 6, 7]) == "4"
+    @test fairRations([2, 3, 4, 5, 6]) == "4"
+    @test fairRations([1, 2]) == "NO"
+end
+
+end # module fairRations_test
+using .fairRations_test
+fairRations_test.test()

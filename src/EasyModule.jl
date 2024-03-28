@@ -716,4 +716,35 @@ function howManyGames(p, d, m, s)
     games_bought
 end
 
+"""
+    fairRations(B)
+
+You are the benevolent ruler of Rankhacker Castle, and today you're distributing bread. Your subjects are 
+in a line, and some of them already have some loaves. Times are hard and your castle's food stocks are 
+dwindling, so you must distribute as few loaves as possible according to the following rules:
+1. Every time you give a loaf of bread to some person `i`, you must also give a loaf of bread to the 
+person immediately in front of or behind them in the line (i.e., persons `i+1` or `i-1`).
+2. After all the bread is distributed, each person must have an even number of loaves.
+Given the number of loaves already held by each citizen, find and return the minimum number of loaves you 
+must distribute to satisfy the two rules above. If this is not possible, return "NO".
+"""
+function fairRations(B)
+    # We distribute 2 loaves at a time so the eventual sum can never 
+    # be even if the starting sum was odd
+    (sum(B) % 2 != 0) && return "NO"
+    
+    # Now distribute left -> right
+    # Note: Direction doesn't matter as we have no restriction on how many loaves
+    # each subject gets as long as it's an even number
+    loaves_handed_out = 0
+    for (i,n) in enumerate(B)
+        if n % 2 != 0
+            B[i+1] += 1
+            loaves_handed_out += 2
+        end
+    end
+    
+    string(loaves_handed_out)
+end
+
 end # module EasyModule
