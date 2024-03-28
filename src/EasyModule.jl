@@ -727,6 +727,13 @@ person immediately in front of or behind them in the line (i.e., persons `i+1` o
 2. After all the bread is distributed, each person must have an even number of loaves.
 Given the number of loaves already held by each citizen, find and return the minimum number of loaves you 
 must distribute to satisfy the two rules above. If this is not possible, return "NO".
+
+# Arguments
+- `B` = numbers of loaves each subjects in the queue already has, in queue order
+
+# Output
+The number of loaves (as a String) distributed to achieve every subject getting an even number.
+"NO" if the task is impossible.
 """
 function fairRations(B)
     # We distribute 2 loaves at a time so the eventual sum can never 
