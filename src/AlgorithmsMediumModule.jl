@@ -1,10 +1,10 @@
 """
-    MediumModule
+    AlgorithmsMediumModule
 
-Module containing "medium" tier questions from HackerRank
+Module containing "medium" tier algorithms questions from HackerRank
 """
 
-module MediumModule
+module AlgorithmsMediumModule
 
 __precompile__(true)
 
@@ -284,4 +284,4 @@ function organizingContainers(containers)
     return issetequal(container_capacities, ball_types_count) ? "Possible" : "Impossible"
 end
 
-end # Module MediumModule
+end # module AlgorithmsMediumModule

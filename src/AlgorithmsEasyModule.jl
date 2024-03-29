@@ -1,10 +1,10 @@
 """
-    EasyModule
+    AlgorithmsEasyModule
 
-Module containing "easy" tier questions from HackerRank
+Module containing "easy" tier algorithms questions from HackerRank
 """
 
-module EasyModule
+module AlgorithmsEasyModule
 
 __precompile__(true)
 
@@ -773,4 +773,4 @@ function bigSorting(unsorted)
     string.(sort((x -> parse(BigInt, x)).(unsorted)))
 end
 
-end # module EasyModule
+end # module AlgorithmsEasyModule

@@ -1,7 +1,7 @@
 module matrixRotation_test
 
 using JHRank
-using JHRank.HardModule
+using JHRank.AlgorithmsHardModule
 using JHRank.UtilityFunctionsModule
 using Test
 

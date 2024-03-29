@@ -19,7 +19,7 @@ export getIntDigits, getDigitAt, reverseInt,
     writeMatrixToFile, writeMatrixAndMetadataToFile,
     isPrime, findPrimesUpTo
 
-using .EasyModule:
+using .AlgorithmsEasyModule:
     beautifulDays,
     findDigits,
     cutTheSticks,
@@ -50,7 +50,7 @@ export beautifulDays, findDigits, cutTheSticks,
     minimumDistance, howManyGames, fairRations,
     bigSorting
 
-using .MediumModule:
+using .AlgorithmsMediumModule:
     formingMagicSquare,
     nonDivisibleSubset,
     countSort,
@@ -61,7 +61,7 @@ export formingMagicSquare, nonDivisibleSubset,
     countSort, timeInWords, hackerlandRadioTransmitters,
     organizingContainers
 
-using .HardModule:
+using .AlgorithmsHardModule:
     matrixRotation
 export matrixRotation
 

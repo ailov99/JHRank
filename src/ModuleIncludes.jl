@@ -1,4 +1,4 @@
 include("UtilityFunctionsModule.jl")
-include("EasyModule.jl")
-include("MediumModule.jl")
-include("HardModule.jl")
+include("AlgorithmsEasyModule.jl")
+include("AlgorithmsMediumModule.jl")
+include("AlgorithmsHardModule.jl")

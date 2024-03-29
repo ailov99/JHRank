@@ -1,7 +1,7 @@
 module beautifulDays_test
 
 using JHRank
-using JHRank.EasyModule
+using JHRank.AlgorithmsEasyModule
 using Test
 
 # i32 'macro' is needed as we only implement this function for Int32 (HR requirements)
@@ -35,7 +35,7 @@ beautifulDays_test.test()
 module findDigits_test 
 
 using JHRank
-using JHRank.EasyModule
+using JHRank.AlgorithmsEasyModule
 using Test
 
 # i32 'macro' is needed as we only implement this function for Int32 (HR requirements)
@@ -61,7 +61,7 @@ findDigits_test.test()
 module cutTheSticks_test
 
 using JHRank
-using JHRank.EasyModule
+using JHRank.AlgorithmsEasyModule
 using Test
 
 function test()
@@ -96,7 +96,7 @@ cutTheSticks_test.test()
 module circularArrayRotation_test
 
 using JHRank
-using JHRank.EasyModule
+using JHRank.AlgorithmsEasyModule
 using Test
 
 # i32 'macro' is needed as we only implement this function for Int32 (HR requirements)
@@ -129,7 +129,7 @@ circularArrayRotation_test.test()
 module viralAdvertising_test
 
 using JHRank
-using JHRank.EasyModule
+using JHRank.AlgorithmsEasyModule
 using Test
 
 function test()
@@ -146,7 +146,7 @@ viralAdvertising_test.test()
 module libraryFine_test
 
 using JHRank
-using JHRank.EasyModule
+using JHRank.AlgorithmsEasyModule
 using Test
 
 function test()
@@ -192,7 +192,7 @@ libraryFine_test.test()
 module maximizingXor_test
 
 using JHRank
-using JHRank.EasyModule
+using JHRank.AlgorithmsEasyModule
 using Test
 
 function test()
@@ -210,7 +210,7 @@ maximizingXor_test.test()
 module appendAndDelete_test
 
 using JHRank
-using JHRank.EasyModule
+using JHRank.AlgorithmsEasyModule
 using Test
 
 function test()
@@ -234,7 +234,7 @@ appendAndDelete_test.test()
 module equalizeArray_test
 
 using JHRank
-using JHRank.EasyModule
+using JHRank.AlgorithmsEasyModule
 using Test
 
 function test()
@@ -254,7 +254,7 @@ equalizeArray_test.test()
 module repeatedString_test
 
 using JHRank
-using JHRank.EasyModule
+using JHRank.AlgorithmsEasyModule
 using Test
 
 function test()
@@ -272,7 +272,7 @@ repeatedString_test.test()
 module serviceLane_test
 
 using JHRank
-using JHRank.EasyModule
+using JHRank.AlgorithmsEasyModule
 using Test
 
 function test()
@@ -294,7 +294,7 @@ serviceLane_test.test()
 module jumpingOnClouds_test
 
 using JHRank
-using JHRank.EasyModule
+using JHRank.AlgorithmsEasyModule
 using Test
 
 function test()
@@ -312,7 +312,7 @@ jumpingOnClouds_test.test()
 module taumBday_test
 
 using JHRank
-using JHRank.EasyModule
+using JHRank.AlgorithmsEasyModule
 using Test
 
 function test()
@@ -343,7 +343,7 @@ taumBday_test.test()
 module kaprekarNumbers_test
 
 using JHRank
-using JHRank.EasyModule
+using JHRank.AlgorithmsEasyModule
 using Test
 
 function test()
@@ -367,7 +367,7 @@ kaprekarNumbers_test.test()
 module squares_test
 
 using JHRank
-using JHRank.EasyModule
+using JHRank.AlgorithmsEasyModule
 using Test
 
 function test()
@@ -385,7 +385,7 @@ squares_test.test()
 module chocolateFeast_test
 
 using JHRank
-using JHRank.EasyModule
+using JHRank.AlgorithmsEasyModule
 using Test
 
 function test()
@@ -404,7 +404,7 @@ chocolateFeast_test.test()
 module beautifulTriplets_test
 
 using JHRank
-using JHRank.EasyModule
+using JHRank.AlgorithmsEasyModule
 using Test
 
 function test()
@@ -421,7 +421,7 @@ beautifulTriplets_test.test()
 module minimumDistance_test
 
 using JHRank
-using JHRank.EasyModule
+using JHRank.AlgorithmsEasyModule
 using Test
 
 function test()
@@ -437,7 +437,7 @@ minimumDistance_test.test()
 module howManyGames_test
 
 using JHRank
-using JHRank.EasyModule
+using JHRank.AlgorithmsEasyModule
 using Test
 
 function test()
@@ -453,7 +453,7 @@ howManyGames_test.test()
 module fairRations_test
 
 using JHRank
-using JHRank.EasyModule
+using JHRank.AlgorithmsEasyModule
 using Test
 
 function test()
@@ -469,7 +469,7 @@ fairRations_test.test()
 module bigSorting_test
 
 using JHRank
-using JHRank.EasyModule
+using JHRank.AlgorithmsEasyModule
 using Test
 
 function test()

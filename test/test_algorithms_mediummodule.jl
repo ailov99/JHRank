@@ -1,7 +1,7 @@
 module formingMagicSquare_test
 
 using JHRank
-using JHRank.MediumModule
+using JHRank.AlgorithmsMediumModule
 using Test
 
 function test()
@@ -36,7 +36,7 @@ formingMagicSquare_test.test()
 module nonDivisibleSubset_test
 
 using JHRank
-using JHRank.MediumModule
+using JHRank.AlgorithmsMediumModule
 using Test
 
 function test()
@@ -60,7 +60,7 @@ nonDivisibleSubset_test.test()
 module countSort_test
 
 using JHRank
-using JHRank.MediumModule
+using JHRank.AlgorithmsMediumModule
 using Test
 
 function test()
@@ -110,7 +110,7 @@ countSort_test.test()
 module timeInWords_test
 
 using JHRank
-using JHRank.MediumModule
+using JHRank.AlgorithmsMediumModule
 using Test
 
 function test()
@@ -139,7 +139,7 @@ timeInWords_test.test()
 module hackerlandRadioTransmitters_test
 
 using JHRank
-using JHRank.MediumModule
+using JHRank.AlgorithmsMediumModule
 using Test
 
 function test()
@@ -156,7 +156,7 @@ hackerlandRadioTransmitters_test.test()
 module organizingContainers_test
 
 using JHRank
-using JHRank.MediumModule
+using JHRank.AlgorithmsMediumModule
 using Test
 
 function test()

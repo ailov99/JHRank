@@ -1,10 +1,10 @@
 """
-    HardModule
+    AlgorithmsHardModule
 
-Module containing "hard" tier questions from HackerRank
+Module containing "hard" tier algorithms questions from HackerRank
 """
 
-module HardModule
+module AlgorithmsHardModule
 
 __precompile__(true)
 
@@ -103,4 +103,4 @@ function matrixRotation(
     return output_m
 end
 
-end # module HardModule
+end # module AlgorithmsHardModule

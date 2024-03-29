@@ -4,16 +4,16 @@ using Test
     include("test_utilityfunctionsmodule.jl")
 end
 
-@testset "EasyModuleTests" begin
-    include("test_easymodule.jl")
+@testset "AlgorithmsEasyModuleTests" begin
+    include("test_algorithms_easymodule.jl")
 end
 
-@testset "MediumModuleTests" begin
-    include("test_mediummodule.jl")
+@testset "AlgorithmsMediumModuleTests" begin
+    include("test_algorithms_mediummodule.jl")
 end
 
-@testset "HardModuleTests" begin
-    include("test_hardmodule.jl")
+@testset "AlgorithmsHardModuleTests" begin
+    include("test_algorithms_hardmodule.jl")
 end
 
 true
