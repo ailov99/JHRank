@@ -16,4 +16,8 @@ end
     include("test_algorithms_hardmodule.jl")
 end
 
+@testset "DataStructuresEasyModuleTests" begin
+    include("test_datastructures_easymodule.jl")
+end
+
 true

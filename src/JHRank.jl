@@ -65,4 +65,8 @@ using .AlgorithmsHardModule:
     matrixRotation
 export matrixRotation
 
+using .DataStructuresEasyModule:
+    rotateLeft
+export rotateLeft
+
 end
