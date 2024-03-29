@@ -68,9 +68,10 @@ module JHRank
     using .SinglyLinkedListModule:
         SinglyLinkedListNode, SinglyLinkedList,
         push!, print
-
+        
     using .DataStructuresEasyModule:
-        rotateLeft
-    export rotateLeft
+        rotateLeft,
+        deleteNode
+    export rotateLeft, deleteNode
 
 end # module JHRank

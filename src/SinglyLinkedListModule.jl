@@ -13,36 +13,51 @@ module SinglyLinkedListModule
     export SinglyLinkedListNode, SinglyLinkedList, push!, stringify
 
     """
-    List node
+    Abstract Node
     """
-    mutable struct SinglyLinkedListNode{T}
-        data::T
-        next::SinglyLinkedListNode{T}
+    abstract type SinglyLinkedListAbstractNode
+    end
+    
+    """
+    Empty node (ie end of list)
+    """
+    struct SinglyLinkedListEmptyNode <: SinglyLinkedListAbstractNode
+    end
+    
+    mutable struct SinglyLinkedListNode <: SinglyLinkedListAbstractNode
+        data::Int
+        next::SinglyLinkedListAbstractNode
 
-        function SinglyLinkedListNode{T}() where T
-            new_node = new{T}()
-            new_node.next = new_node
+        function SinglyLinkedListNode()
+            new_node = new()
+            new_node.data = 0
+            new_node.next = SinglyLinkedListEmptyNode()
             new_node
         end
 
-        function SinglyLinkedListNode{T}(data) where T
-            new_node = new{T}(data)
-            new_node.next = new_node
+        function SinglyLinkedListNode(data, next)
+            new_node = SinglyLinkedListNode()
+            new_node.data = data
+            new_node.next = next
             new_node
         end
     end
+    
+    mutable struct SinglyLinkedList
+        head::SinglyLinkedListAbstractNode
+        tail::SinglyLinkedListAbstractNode
 
-    """
-    The list
-    """
-    mutable struct SinglyLinkedList{T}
-        length::Int
-        tail::SinglyLinkedListNode{T}
+        function SinglyLinkedList()
+            new_list = new()
+            new_list.head = SinglyLinkedListEmptyNode()
+            new_list.tail = SinglyLinkedListEmptyNode()
+            new_list
+        end
 
-        function SinglyLinkedList{T}() where T
-            new_list = new{T}()
-            new_list.length = 0
-            new_list.tail = SinglyLinkedListNode{T}()
+        function SinglyLinkedList(head, tail)
+            new_list = SinglyLinkedList()
+            new_list.head = head
+            new_list.tail = tail
             new_list
         end
     end
@@ -50,31 +65,34 @@ module SinglyLinkedListModule
     """
     Push a new node to the end of the list
     """
-    function Base.push!(list::SinglyLinkedList{T}, data::T) where T
-        new_node = SinglyLinkedListNode{T}(data)
+    function Base.push!(list::SinglyLinkedList, data::Int)
+        new_node = SinglyLinkedListNode(data, SinglyLinkedListEmptyNode())
         
-        # First node in list is always going to be empty (the root)
-        # So we just append this one as the tail
-        list.tail.next = new_node
-        list.length += 1
+        if (list.head isa SinglyLinkedListEmptyNode)
+            list.head = new_node
+        else
+            list.tail.next = new_node
+        end
+        list.tail = new_node
     end
 
     """
     Stringify out the whole list e.g.:
     data1 data2 data3 ...
     """
-    function stringify(list::SinglyLinkedList{T}) where T
-        node = list.tail
-
+    function stringify(list::SinglyLinkedList)
+        node = list.head
         buffer = IOBuffer()
-        for i = 1:list.length
-            node = node.next
+
+        while !(node isa SinglyLinkedListEmptyNode)
             node_data = node.data
-            if i == list.length
+            if node.next isa SinglyLinkedListEmptyNode
                 print(buffer, "$node_data")
             else
                 print(buffer, "$node_data ")
             end
+
+            node = node.next
         end
 
         String(take!(buffer))
