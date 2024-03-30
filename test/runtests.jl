@@ -20,4 +20,8 @@ end
     include("test_datastructures_easymodule.jl")
 end
 
+@testset "MathematicsEasyModuleTests" begin
+    include("test_mathematics_easymodule.jl")
+end
+
 true

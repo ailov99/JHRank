@@ -74,4 +74,8 @@ module JHRank
         deleteNode
     export rotateLeft, deleteNode
 
+    using .MathematicsEasyModule:
+        maximumDraws
+    export maximumDraws
+
 end # module JHRank
