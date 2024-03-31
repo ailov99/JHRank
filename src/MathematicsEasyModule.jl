@@ -25,4 +25,23 @@ module MathematicsEasyModule
         (n+1)
     end
 
+    """
+        lowestTriangle(trianglebase, area)
+
+    Given integers `trianglebase` and `area`, find the smallest integer `h`, such that there exists a triangle of height `h`,
+    base `trianglebase`, having an area of at least `area`.
+
+    # Arguments
+    - `trianglebase` = Base of the triangle
+    - `area` = Minimum area of the triangle
+
+    # Output
+    Minimum height of such a triangle (Integer)
+    """
+    function lowestTriangle(trianglebase, area)
+        # area = h*b/2
+        # 2*area/b = h
+        ceil(Int, 2*area/trianglebase)
+    end
+
 end # module MathematicsEasyModule
