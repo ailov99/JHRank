@@ -44,4 +44,28 @@ module MathematicsEasyModule
         ceil(Int, 2*area/trianglebase)
     end
 
+    """
+        gameWithCells(n, m)
+
+    Luke is daydreaming in Math class. He has a sheet of graph paper with `n` rows and `m` columns, and he imagines that there is 
+    an army base in each cell for a total of `n * m` bases. He wants to drop supplies at strategic points on the sheet, marking each 
+    drop point with a red dot. If a base contains at least one package inside or on top of its border fence, then it's considered to be supplied.
+
+    Given `n` and `m`, what's the minimum number of packages that Luke must drop to supply all of his bases?
+
+    # Arguments
+    - `n` = number of rows in the grid
+    - `m` = number of columns in the grid
+
+    # Output
+    Minimum number of red dots that need placing on the grid edges to cover all cells
+    """
+    function gameWithCells(n, m)
+        # Optimal way to "cover" the grid is placing a dot in the centre of a 2x2 box in the grid
+        # so we ought to count the number of 2x2 boxes in the grid (including 2x1 / 1x2 "half-boxes" so round up)
+        row_pairs = ceil(Int, n/2)
+        col_pairs = ceil(Int, m/2)
+        row_pairs * col_pairs
+    end
+
 end # module MathematicsEasyModule

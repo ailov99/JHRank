@@ -32,3 +32,22 @@ end # module lowestTriangle_test
 
 using .lowestTriangle_test
 lowestTriangle_test.test()
+
+module gameWithCells_test
+
+    using JHRank
+    using JHRank.MathematicsEasyModule
+    using Test
+
+    function test()
+        # HR
+        @test gameWithCells(2, 3) == 2
+        @test gameWithCells(2, 2) == 1
+        @test gameWithCells(1, 1) == 1
+        @test gameWithCells(25, 25) == 169
+    end
+
+end # module gameWithCells_test
+
+using .gameWithCells_test
+gameWithCells_test.test()
