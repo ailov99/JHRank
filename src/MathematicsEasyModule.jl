@@ -68,4 +68,31 @@ module MathematicsEasyModule
         row_pairs * col_pairs
     end
 
+    """
+        handshake(n)
+
+    At the annual meeting of Board of Directors of Acme Inc. If everyone attending shakes hands exactly one time with 
+    every other attendee, how many handshakes are there?
+
+    # Arguments
+    - `n` = number of people at the meeting
+
+    # Output
+    How many handshakes were there if everyone shook everyone's hand?
+    """
+    function handshake(n)
+        # Base cases
+        (n < 2) && return 0
+        
+        # C = n! / r!(n - r)!
+        # Note that Julia's factorial() uses a lookup table so wrap
+        # argument in big() in case it overflows
+        # Also round() to avoid accumulating errors. Result ought to be
+        # convertible to a BigInt
+        r = 2
+        numerator = round(factorial(big(n)))
+        denominator = factorial(r)*round(factorial(big(n - r)))
+        BigInt(round(numerator/denominator))
+    end
+
 end # module MathematicsEasyModule

@@ -77,8 +77,9 @@ module JHRank
     using .MathematicsEasyModule:
         maximumDraws,
         lowestTriangle,
-        gameWithCells
+        gameWithCells,
+        handshake
     export maximumDraws, lowestTriangle,
-        gameWithCells
+        gameWithCells, handshake
 
 end # module JHRank
